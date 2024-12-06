@@ -78,7 +78,7 @@
 .artist { /* Artist box styles */
     margin: 10px 0; /* Margin around each artist box */
     padding: 10px; /* Padding inside the artist box */
-    border: 2px dashed #00ff00; /* Dashed green border */
+    border: 2px solid #00ff00; /* Dashed green border */
     cursor: pointer; /* Pointer cursor on hover */
     text-shadow: 0 0 10px #00ff00; /* Green text shadow */
     transition: all 0.2s ease; /* Smooth transition effect */
@@ -91,7 +91,7 @@
 }
 
 /* =========================================================
-   SONG LIST AND ITEMS
+   SONG/CART CONTAINER (LEFT LINE), SONG/CART BLOCK, SONG/CART HOVER
    ========================================================= */
 .songs { /* Song list container styles */
     margin: 10px 0; /* Margin around the song list */
@@ -101,43 +101,17 @@
     display: none; /* Hidden by default */
 }
 
-.song { /* Individual song item styles */
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out song name and button */
-    align-items: center; /* Vertically center items */
-    margin: 10px 0; /* Margin around each song item */
-    padding: 5px; /* Padding inside each song item */
-    border: 1px solid #00ff00; /* Green border */
-    background: rgba(0, 255, 0, 0.1); /* Semi-transparent green background */
-    position: relative; /* Positioning for button */
-}
-
-.song:hover {
-    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
-}
-
-.song a { /* Styles for links inside song items */
-    text-decoration: none; /* Remove underline */
-    color: #000; /* Black text */
-}
-
-.song a:hover { /* Hover effect for links inside song items */
-    text-decoration: underline; /* Underline on hover */
-    color: #000; /* Black text on hover */
-}
-
-/* =========================================================
-   CART STYLES
-   ========================================================= */
 #cart-container { /* Cart container styles */
-    background: #111; /* Dark background for cart */
-    border: 2px solid #00ff00; /* Green border */
-    padding: 10px; /* Padding inside the cart */
-    margin-top: 10px; /* Margin above the cart */
-    text-align: left; /* Align text to the left */
+    margin: 10px 0; /* Margin around the song list */
+    padding-left: 10px; /* Padding on the left */
+    padding-right: 10px;
+    font-size: .8rem; /* Font size */
+    border: 2px dashed #00ff00; /* Green border */
+    display: none; /* Hidden by default */
+    transition: all 0.2s ease; /* Smooth transition effect */
 }
 
-.cart-item { /* Individual cart item styles */
+.song, .cart-item { /* Individual song item styles */
     display: flex; /* Use flexbox for layout */
     justify-content: space-between; /* Space out song name and button */
     align-items: center; /* Vertically center items */
@@ -146,12 +120,24 @@
     border: 1px solid #00ff00; /* Green border */
     background: rgba(0, 255, 0, 0.1); /* Semi-transparent green background */
     position: relative; /* Positioning for button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.song:hover, .cart-item:hover {
+    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
+    color: #fff;
+}
+
+#cart-container:hover {
+    background-color: #000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+    box-shadow: 0 0 10px #00ff00; /* Green glow effect on hover */
 }
 
 /* =========================================================
-   REMOVE BUTTON
+   ADD TO CART/REMOVE BUTTON
    ========================================================= */
-.cart-item button { /* Styles for buttons in cart items */
+.cart-item button, .add-to-cart-btn { /* Styles for buttons in cart items */
     padding: 5px; /* Padding inside the button */
     font-family: 'Courier New', monospace; /* Font family */
     font-size: .8rem; /* Font size */
@@ -164,14 +150,14 @@
     right: 10px; /* Position to the right */
 }
 
-.cart-item button:hover { /* Hover effect for cart item buttons */
+.cart-item button:hover, .add-to-cart-btn:hover { /* Hover effect for cart item buttons */
     text-decoration: underline; /* Underline text on hover */
     color: #fff; /* Turn text black on hover */
     cursor: pointer; /* Pointer cursor on hover */
 }
 
 /* =========================================================
-   BUTTON STYLES
+   DOWNLOAD/CLEAR CART BUTTON
    ========================================================= */
 #download-cart-btn, #clear-cart-btn { /* General button styles */
     margin: 10px auto; /* Center button with margin */
@@ -189,27 +175,5 @@
     border-color: #fff; /* White border on hover */
     box-shadow: 0 0 10px #00ff00; /* Green glow effect */
     text-decoration: underline; /* Underline text on hover */
-    cursor: pointer; /* Pointer cursor on hover */
-}
-
-/* =========================================================
-   ADD TO CART BUTTON
-   ========================================================= */
-.add-to-cart-btn { /* Add to cart button styles */
-    padding: 5px; /* Padding inside the button */
-    font-family: 'Courier New', monospace; /* Font family */
-    font-size: .8rem; /* Font size */
-    border: none; /* Remove border */
-    background-color: transparent; /* Transparent background */
-    color: #00ff00; /* Green text */
-    outline: none; /* Remove outline */
-    text-align: center; /* Center text */
-    position: absolute; /* Position button absolutely inside song container */
-    right: 10px; /* Position to the right */
-}
-
-.add-to-cart-btn:hover { /* Hover effect for add to cart button */
-    text-decoration: underline; /* Underline text on hover */
-    color: #fff; /* Turn text black on hover */
     cursor: pointer; /* Pointer cursor on hover */
 }
