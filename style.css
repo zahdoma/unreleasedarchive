@@ -1,127 +1,220 @@
-/* GLOBAL STYLES: Sets the overall look of the website */
+/* =========================================================
+   GLOBAL STYLES
+   ========================================================= */
+/* Sets the overall look of the website */
 body {
     font-family: 'Courier New', monospace; /* Monospace font for a terminal-like feel */
     background-color: #0a0a0a; /* Dark background for a retro hacker look */
     color: #00ff00; /* Green text to mimic old terminal displays */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    margin: 0;
+    padding: 0;
     text-align: center; /* Center-align all text by default */
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* SEARCH BAR: Styles for the search input field */
+/* =========================================================
+   SEARCH BAR STYLES
+   ========================================================= */
+/* Styles for the search input field */
 #search-bar {
-    width: 30%; /* Full width of the container */
+    width: 30%;
     margin: 10px auto;
-    padding: 10px; /* Add padding for a better look */
-    font-family: 'Courier New', monospace; /* Match the retro font */
-    font-size: 1rem; /* Slightly larger font size */
-    border: 2px solid #00ff00; /* Green border for terminal look */
-    background-color: #0a0a0a; /* Match the background color */
-    color: #00ff00; /* Green text */
-    outline: none; /* Remove default focus outline */
-    text-align: left; /* Align the placeholder text to the left */
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    border: 2px solid #00ff00;
+    background-color: #0a0a0a;
+    color: #00ff00;
+    outline: none;
+    text-align: left;
 }
 
-/* SEARCH BAR FOCUS: Highlight the search bar when focused */
+/* Highlight the search bar when focused */
 #search-bar:focus {
-    border-color: #fff; /* White border on focus */
-    box-shadow: 0 0 10px #00ff00; /* Glowing effect */
+    border-color: #fff;
+    box-shadow: 0 0 10px #00ff00;
 }
 
-/* RETRO TITLE: Styles the header title */
+/* =========================================================
+   TITLE AND ANIMATION
+   ========================================================= */
+/* Styles the header title */
 .retro-title {
-    font-size: 2rem; /* Makes the title text larger */
+    font-size: 2rem;
     display: inline-block; /* Keeps title inline for the blinking cursor */
 }
 
-/* BLINKING CURSOR: Adds animation to the cursor after the title */
+/* Adds animation to the cursor after the title */
 .blinking-cursor {
-    display: inline-block; /* Keeps it aligned with text */
-    animation: blink 1s infinite; /* Infinite blinking effect */
+    display: inline-block;
+    animation: blink 1s infinite;
 }
 
-/* BLINK ANIMATION: Controls the blinking cursor effect */
+/* Blinking animation for the cursor */
 @keyframes blink {
-    0%, 100% { opacity: 1; } /* Cursor visible at start and end */
-    50% { opacity: 0; } /* Cursor invisible mid-animation */
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
-/* MAIN CONTAINER: Styles the container holding the artist list */
+/* =========================================================
+   MAIN CONTAINER AND STATIC EFFECT
+   ========================================================= */
+/* Styles the container holding the artist list */
 #music-container {
-    background: linear-gradient(to right, #050505 0%, #111 50%, #050505 100%); /* Subtle gradient for depth */
-    box-shadow: 0 0 15px #00ff00; /* Glowing green border effect */
-    width: 50%; /* Makes the container 50% of the viewport width */
-    margin: 20px auto; /* Center the container vertically and horizontally */
-    border: 2px solid #00ff00; /* Green border around the container */
-    padding: 20px; /* Inner spacing inside the container */
-    text-align: left; /* Align text to the left inside this container */
-    position: relative; /* Enables positioning for pseudo-elements */
+    background: linear-gradient(to right, #050505 0%, #111 50%, #050505 100%);
+    box-shadow: 0 0 15px #00ff00;
+    width: 50%;
+    margin: 20px auto;
+    border: 2px solid #00ff00;
+    padding: 20px;
+    text-align: left;
+    position: relative;
 }
 
-/* STATIC EFFECT: Overlay a noise texture for a retro look */
+/* Overlay a noise texture for a retro look */
 #music-container:before {
-    content: ""; /* Empty content for decoration */
-    position: absolute; /* Position it over the container */
-    top: 0; /* Align to the top of the container */
-    bottom: 0; /* Align to the bottom of the container */
-    left: 0; /* Align to the left of the container */
-    right: 0; /* Align to the right of the container */
-    background: url('static_noise.png') repeat; /* Repeat the noise texture */
-    opacity: 0.05; /* Make it very subtle */
-    pointer-events: none; /* Ensure it doesn't interfere with user interaction */
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('static_noise.png') repeat;
+    opacity: 0.05;
+    pointer-events: none;
 }
 
-/* ARTIST BOX: Styles each artist's name box */
+/* =========================================================
+   ARTIST BOX STYLES
+   ========================================================= */
+/* Styles each artist's name box */
 .artist {
-    margin: 10px 0; /* Space between artist boxes */
-    padding: 10px; /* Inner spacing for each box */
-    border: 2px dashed #00ff00; /* Dashed green border for a terminal-like design */
-    cursor: pointer; /* Changes cursor to a pointer when hovering */
-    text-shadow: 0 0 10px #00ff00; /* Glowing text effect */
-    transition: all 0.2s ease; /* Smooth hover effect */
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px dashed #00ff00;
+    cursor: pointer;
+    text-shadow: 0 0 10px #00ff00;
+    transition: all 0.2s ease;
 }
 
-/* ARTIST BOX HOVER: Highlight effect when the user hovers over an artist */
+/* Highlight effect when hovering over an artist */
 .artist:hover {
-    background-color: #000; /* Darkens the background on hover */
-    color: #fff; /* Changes text color to white */
-    box-shadow: 0 0 10px #00ff00; /* Additional glow effect */
+    background-color: #000;
+    color: #fff;
+    box-shadow: 0 0 10px #00ff00;
 }
 
-/* SONG LIST: Styles the container for songs under an artist */
+/* =========================================================
+   SONG LIST AND ITEMS
+   ========================================================= */
+/* Styles the container for songs under an artist */
 .songs {
-    margin: 15px 0; /* Space above and below the song list */
-    padding-left: 15px; /* Indent the song list */
-    border-left: 2px solid #00ff00; /* Green line to visually group songs */
-    display: none; /* Initially hidden, shown when toggled */
+    margin: 15px 0;
+    padding-left: 15px;
+    border-left: 2px solid #00ff00;
+    display: none; /* Initially hidden */
 }
 
-/* SONG BOX: Styles each song in the list */
+/* Styles each song in the list */
 .song {
-    display: flex; /* Align song name and button in a row */
-    justify-content: space-between; /* Space between song name and download button */
-    align-items: center; /* Vertically align items */
-    margin: 10px 0; /* Space between songs */
-    padding: 8px; /* Inner spacing for each song box */
-    border: 1px solid #00ff00; /* Green border around each song */
-    background: rgba(0, 255, 0, 0.1); /* Transparent green background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #00ff00;
+    background: rgba(0, 255, 0, 0.1);
 }
 
-/* SONG BOX HOVER: Highlight effect for song boxes on hover */
+/* Highlight effect for song boxes on hover */
 .song:hover {
-    background-color: #00ff00; /* Fully green background */
-    color: #000; /* Change text color to black for contrast */
+    background-color: #00ff00;
+    color: #000;
 }
 
-/* DOWNLOAD BUTTON: Styles for the download link inside each song box */
+/* Styles for the download link inside each song box */
 .song a {
-    text-decoration: none; /* Removes underline from the link */
-    color: #000; /* Black text for the link */
+    text-decoration: none;
+    color: #000;
 }
 
-/* DOWNLOAD BUTTON HOVER: Highlights the download link on hover */
+/* Highlights the download link on hover */
 .song a:hover {
-    text-decoration: underline; /* Underline the link for emphasis */
-    color: #000; /* Change text color to white */
+    text-decoration: underline;
+    color: #000;
+}
+
+/* =========================================================
+   CART STYLES
+   ========================================================= */
+/* Styles the container holding the cart */
+#cart-container {
+    background: #111;
+    border: 2px solid #00ff00;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+/* Styles for individual items in the cart */
+.cart-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #00ff00;
+    background-color: rgba(0, 255, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Styles for remove buttons in the cart */
+.cart-item button {
+    background-color: #00ff00;
+    color: #000;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.cart-item button:hover {
+    background-color: #fff;
+    color: #00ff00;
+}
+
+/* Styles for the download cart button */
+#download-cart-btn {
+    width: 25%;
+    margin: 10px auto;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    border: 2px solid #00ff00;
+    background-color: #0a0a0a;
+    color: #00ff00;
+    outline: none;
+    text-align: center;
+}
+
+#download-cart-btn:hover {
+    border-color: #fff;
+    box-shadow: 0 0 10px #00ff00;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Styles for the clear cart button */
+#clear-cart-btn {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+#clear-cart-btn:hover {
+    background-color: #fff;
+    color: #ff0000;
 }
