@@ -10,8 +10,14 @@
     <div id="music-container">
         <h1><span class="retro-title">/unreleased<span class="blinking-cursor">_</span></span></h1>
         
-        <!-- Search Bar -->
-        <input type="text" id="search-bar" placeholder="search for a song..." />
+        <!-- Search and Download Button Container -->
+        <div id="search-and-download">
+            <!-- Search Bar -->
+            <input type="text" id="search-bar" placeholder="search for a song..." />
+            
+            <!-- Download Cart Button -->
+            <button id="download-cart-btn">download cart</button>
+        </div>
 
         <!-- Cart Section -->
         <div id="cart-container" style="display:none;">
@@ -19,9 +25,6 @@
             <div id="cart-items-list"></div>
             <button id="clear-cart-btn">clear cart</button>
         </div>
-
-        <!-- Download Cart Button -->
-        <button id="download-cart-btn">download cart</button>
     
         <div id="artists"></div>
     </div>
