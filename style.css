@@ -1,248 +1,236 @@
 /* =========================================================
    GLOBAL STYLES
    ========================================================= */
-/* Sets the overall look of the website */
-body {
-    font-family: 'Courier New', monospace; /* Monospace font for a terminal-like feel */
-    background-color: #0a0a0a; /* Dark background for a retro hacker look */
-    color: #00ff00; /* Green text to mimic old terminal displays */
-    margin: 0;
-    padding: 0;
-    text-align: center; /* Center-align all text by default */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-/* =========================================================
-   SEARCH BAR STYLES
-   ========================================================= */
-/* Styles for the search input field */
-#search-bar {
-    margin: 10px auto;
-    padding: 10px;
-    font-family: 'Courier New', monospace;
-    font-size: .8rem;
-    border: 2px solid #00ff00;
-    background-color: #0a0a0a;
-    color: #00ff00;
-    outline: none;
-    text-align: left;
-}
-
-/* Highlight the search bar when focused */
-#search-bar:focus {
-    border-color: #fff;
-    box-shadow: 0 0 10px #00ff00;
+   body { /* Global body styles */
+    font-family: 'Courier New', monospace; /* Font style */
+    background-color: #0a0a0a; /* Background color */
+    color: #00ff00; /* Text color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    text-align: center; /* Center text */
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
 
 /* =========================================================
    TITLE AND ANIMATION
    ========================================================= */
-/* Styles the header title */
-.retro-title {
-    font-size: 2rem;
-    display: inline-block; /* Keeps title inline for the blinking cursor */
+.retro-title { /* Retro title styles */
+    font-size: 2rem; /* Font size */
+    display: inline-block; /* Display as inline block */
 }
 
-/* Adds animation to the cursor after the title */
-.blinking-cursor {
-    display: inline-block;
-    animation: blink 1s infinite;
+.blinking-cursor { /* Blinking cursor styles */
+    display: inline-block; /* Display as inline block */
+    animation: blink 1s infinite; /* Apply blinking animation */
 }
 
-/* Blinking animation for the cursor */
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+@keyframes blink { /* Keyframe for blinking effect */
+    0%, 100% { opacity: 1; } /* Full opacity at start and end */
+    50% { opacity: 0; } /* Half opacity in the middle */
 }
 
 /* =========================================================
    MAIN CONTAINER AND STATIC EFFECT
    ========================================================= */
-/* Styles the container holding the artist list */
-#music-container {
-    background: linear-gradient(to right, #050505 0%, #111 50%, #050505 100%);
-    box-shadow: 0 0 15px #00ff00;
-    width: 50%;
-    margin: 20px auto;
-    border: 2px solid #00ff00;
-    padding: 20px;
-    text-align: left;
-    position: relative;
+#music-container { /* Main container styles */
+    background: linear-gradient(to right, #050505 0%, #111 50%, #050505 100%); /* Gradient background */
+    box-shadow: 0 0 15px #00ff00; /* Green glow effect */
+    width: 50%; /* Width of the container */
+    margin: 20px auto; /* Centered with margin */
+    border: 2px solid #00ff00; /* Green border */
+    padding: 20px; /* Padding inside the container */
+    text-align: left; /* Align text to the left */
+    position: relative; /* Relative positioning for before element */
 }
 
-/* Overlay a noise texture for a retro look */
-#music-container:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: url('static_noise.png') repeat;
-    opacity: 0.05;
-    pointer-events: none;
+#music-container:before { /* Static noise effect in the background */
+    content: ""; /* Empty content */
+    position: absolute; /* Absolute positioning */
+    top: 0; bottom: 0; left: 0; right: 0; /* Stretch it across the container */
+    background: url('static_noise.png') repeat; /* Repeat the noise texture */
+    opacity: 0.05; /* Low opacity for a subtle effect */
+    pointer-events: none; /* Prevent interaction with the background */
+}
+
+/* =========================================================
+   SEARCH BAR STYLES
+   ========================================================= */
+#search-bar { /* Styles for search bar */
+    margin: 10px auto; /* Center the input with margin */
+    padding: 10px; /* Padding inside the input */
+    font-family: 'Courier New', monospace; /* Font family */
+    font-size: .8rem; /* Font size */
+    border: 2px solid #00ff00; /* Green border */
+    background-color: #0a0a0a; /* Dark background color */
+    color: #00ff00; /* Green text */
+    outline: none; /* Remove outline */
+    text-align: left; /* Align text to the left */
+}
+
+#search-bar:focus { /* Styles when the search bar is focused */
+    border-color: #fff; /* White border on focus */
+    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
 }
 
 /* =========================================================
    ARTIST BOX STYLES
    ========================================================= */
-/* Styles each artist's name box */
-.artist {
-    margin: 10px 0;
-    padding: 10px;
-    border: 2px dashed #00ff00;
-    cursor: pointer;
-    text-shadow: 0 0 10px #00ff00;
-    transition: all 0.2s ease;
+.artist { /* Artist box styles */
+    margin: 10px 0; /* Margin around each artist box */
+    padding: 10px; /* Padding inside the artist box */
+    border: 2px dashed #00ff00; /* Dashed green border */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-shadow: 0 0 10px #00ff00; /* Green text shadow */
+    transition: all 0.2s ease; /* Smooth transition effect */
 }
 
-/* Highlight effect when hovering over an artist */
-.artist:hover {
-    background-color: #000;
-    color: #fff;
-    box-shadow: 0 0 10px #00ff00;
+.artist:hover { /* Hover effect for artist box */
+    background-color: #000; /* Black background on hover */
+    color: #fff; /* White text on hover */
+    box-shadow: 0 0 10px #00ff00; /* Green glow effect on hover */
 }
 
 /* =========================================================
    SONG LIST AND ITEMS
    ========================================================= */
-/* Styles the container for songs under an artist */
-.songs {
-    margin: 10px 0;
-    padding-left: 10px;
-    font-size: .8rem;
-    border-left: 2px solid #00ff00;
-    display: none; /* Initially hidden */
+.songs { /* Song list container styles */
+    margin: 10px 0; /* Margin around the song list */
+    padding-left: 10px; /* Padding on the left */
+    font-size: .8rem; /* Font size */
+    border-left: 2px solid #00ff00; /* Green left border */
+    display: none; /* Hidden by default */
 }
 
-/* Styles each song in the list */
-.song {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-    padding: 8px;
-    border: 1px solid #00ff00;
-    background: rgba(0, 255, 0, 0.1);
+.song { /* Individual song item styles */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out song name and button */
+    align-items: center; /* Vertically center items */
+    margin: 10px 0; /* Margin around each song item */
+    padding: 5px; /* Padding inside each song item */
+    border: 1px solid #00ff00; /* Green border */
+    background: rgba(0, 255, 0, 0.1); /* Semi-transparent green background */
+    position: relative; /* Positioning for button */
 }
 
-/* Highlight effect for song boxes on hover */
 .song:hover {
-    background-color: #00ff00;
-    color: #000;
+    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
 }
 
-/* Styles for the download link inside each song box */
-.song a {
-    text-decoration: none;
-    color: #000;
+.song a { /* Styles for links inside song items */
+    text-decoration: none; /* Remove underline */
+    color: #000; /* Black text */
 }
 
-/* Highlights the download link on hover */
-.song a:hover {
-    text-decoration: underline;
-    color: #000;
+.song a:hover { /* Hover effect for links inside song items */
+    text-decoration: underline; /* Underline on hover */
+    color: #000; /* Black text on hover */
 }
 
 /* =========================================================
    CART STYLES
    ========================================================= */
-/* Styles the container holding the cart */
-#cart-container {
-    background: #111;
-    border: 2px solid #00ff00;
-    padding: 10px;
-    margin-top: 10px;
-    text-align: left;
+#cart-container { /* Cart container styles */
+    background: #111; /* Dark background for cart */
+    border: 2px solid #00ff00; /* Green border */
+    padding: 10px; /* Padding inside the cart */
+    margin-top: 10px; /* Margin above the cart */
+    text-align: left; /* Align text to the left */
 }
 
-/* Styles for individual items in the cart */
-.cart-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #00ff00;
-    background-color: rgba(0, 255, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.cart-item { /* Individual cart item styles */
+    margin-bottom: 10px; /* Margin at the bottom of each item */
+    padding: 10px; /* Padding inside the cart item */
+    border: 1px solid #00ff00; /* Green border */
+    background-color: rgba(0, 255, 0, 0.1); /* Semi-transparent green background */
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; /* Space between item description and buttons */
+    align-items: center; /* Vertically align items */
+    position: relative; /* Positioning for buttons */
 }
 
-/* Styles for remove buttons in the cart */
-.cart-item button {
-    margin: 10px auto;
-    padding: 10px;
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    border: 2px solid #00ff00;
-    background-color: #0a0a0a;
-    color: #00ff00;
-    outline: none;
-    text-align: center;
+.cart-item button { /* Styles for buttons in cart items */
+    margin: 10px auto; /* Center button with margin */
+    padding: 10px; /* Padding inside the button */
+    font-family: 'Courier New', monospace; /* Font family */
+    font-size: 1rem; /* Font size */
+    border: 2px solid #00ff00; /* Green border */
+    background-color: #0a0a0a; /* Dark background */
+    color: #00ff00; /* Green text */
+    outline: none; /* Remove outline */
+    text-align: center; /* Center text */
 }
 
-.cart-item button:hover {
-    border-color: #fff;
-    box-shadow: 0 0 10px #00ff00;
-    text-decoration: underline;
-    cursor: pointer;
+.cart-item button:hover { /* Hover effect for cart item buttons */
+    border-color: #fff; /* White border on hover */
+    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
+    text-decoration: underline; /* Underline text on hover */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
-/* Styles for the download cart button */
-#download-cart-btn {
-    margin: 10px auto;
-    padding: 10px;
-    font-family: 'Courier New', monospace;
-    font-size: .8rem;
-    border: 2px solid #00ff00;
-    background-color: #0a0a0a;
-    color: #00ff00;
-    outline: none;
-    text-align: center;
+/* =========================================================
+   BUTTON STYLES
+   ========================================================= */
+#download-cart-btn, #clear-cart-btn { /* General button styles */
+    margin: 10px auto; /* Center button with margin */
+    padding: 10px; /* Padding inside the button */
+    font-family: 'Courier New', monospace; /* Font family */
+    font-size: .8rem; /* Font size */
+    border: 2px solid #00ff00; /* Green border */
+    background-color: #0a0a0a; /* Dark background */
+    color: #00ff00; /* Green text */
+    outline: none; /* Remove outline */
+    text-align: center; /* Center text */
 }
 
-#download-cart-btn:hover {
-    border-color: #fff;
-    box-shadow: 0 0 10px #00ff00;
-    text-decoration: underline;
-    cursor: pointer;
+#download-cart-btn:hover, #clear-cart-btn:hover { /* Hover effects for all buttons */
+    border-color: #fff; /* White border on hover */
+    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
+    text-decoration: underline; /* Underline text on hover */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
-/* Styles for the clear cart button */
-#clear-cart-btn {
-    margin: 10px auto;
-    padding: 10px;
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    border: 2px solid #00ff00;
-    background-color: #0a0a0a;
-    color: #00ff00;
-    outline: none;
-    text-align: center;
+/* =========================================================
+   ADD TO CART BUTTON
+   ========================================================= */
+   .add-to-cart-btn { /* Add to cart button styles */
+    padding: 5px; /* Padding inside the button */
+    font-family: 'Courier New', monospace; /* Font family */
+    font-size: .8rem; /* Font size */
+    border: none; /* Remove border */
+    background-color: transparent; /* Transparent background */
+    color: #00ff00; /* Green text */
+    outline: none; /* Remove outline */
+    text-align: center; /* Center text */
+    position: absolute; /* Position button absolutely inside song container */
+    right: 10px; /* Position to the right */
 }
 
-#clear-cart-btn:hover {
-    border-color: #fff;
-    box-shadow: 0 0 10px #00ff00;
-    text-decoration: underline;
-    cursor: pointer;
+.add-to-cart-btn:hover { /* Hover effect for add to cart button */
+    text-decoration: underline; /* Underline text on hover */
+    color: #fff; /* Turn text black on hover */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
-/* Styles for add to cart buttons */
-.add-to-cart-btn {
-    padding: 5px;
-    font-family: 'Courier New', monospace;
-    font-size: .8rem;
-    border: 2px solid #00ff00;
-    background-color: #0a0a0a;
-    color: #00ff00;
-    outline: none;
-    text-align: center;
+/* =========================================================
+   REMOVE BUTTON
+   ========================================================= */
+.cart-item button { /* Remove button in cart item */
+    margin: 0; /* Remove default margin */
+    padding: 5px; /* Padding inside the button */
+    font-family: 'Courier New', monospace; /* Font family */
+    font-size: .8rem; /* Font size */
+    border: 2px solid #00ff00; /* Green border */
+    background-color: #0a0a0a; /* Dark background */
+    color: #00ff00; /* Green text */
+    outline: none; /* Remove outline */
+    text-align: center; /* Center text */
+    position: absolute; /* Position button absolutely inside the cart item container */
+    right: 10px; /* Position to the right */
 }
 
-.add-to-cart-btn:hover {
-    border-color: #fff;
-    box-shadow: 0 0 10px #00ff00;
-    text-decoration: underline;
-    cursor: pointer;
+.cart-item button:hover { /* Hover effect for remove button */
+    border-color: #fff; /* White border on hover */
+    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
+    text-decoration: underline; /* Underline text on hover */
+    cursor: pointer; /* Pointer cursor on hover */
 }
-
