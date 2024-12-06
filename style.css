@@ -17,11 +17,10 @@ body {
    ========================================================= */
 /* Styles for the search input field */
 #search-bar {
-    width: 30%;
     margin: 10px auto;
     padding: 10px;
     font-family: 'Courier New', monospace;
-    font-size: 1rem;
+    font-size: .8rem;
     border: 2px solid #00ff00;
     background-color: #0a0a0a;
     color: #00ff00;
@@ -109,8 +108,9 @@ body {
    ========================================================= */
 /* Styles the container for songs under an artist */
 .songs {
-    margin: 15px 0;
-    padding-left: 15px;
+    margin: 10px 0;
+    padding-left: 10px;
+    font-size: .8rem;
     border-left: 2px solid #00ff00;
     display: none; /* Initially hidden */
 }
@@ -169,26 +169,30 @@ body {
 
 /* Styles for remove buttons in the cart */
 .cart-item button {
-    background-color: #00ff00;
-    color: #000;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.cart-item button:hover {
-    background-color: #fff;
-    color: #00ff00;
-}
-
-/* Styles for the download cart button */
-#download-cart-btn {
-    width: 25%;
     margin: 10px auto;
     padding: 10px;
     font-family: 'Courier New', monospace;
     font-size: 1rem;
+    border: 2px solid #00ff00;
+    background-color: #0a0a0a;
+    color: #00ff00;
+    outline: none;
+    text-align: center;
+}
+
+.cart-item button:hover {
+    border-color: #fff;
+    box-shadow: 0 0 10px #00ff00;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Styles for the download cart button */
+#download-cart-btn {
+    margin: 10px auto;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: .8rem;
     border: 2px solid #00ff00;
     background-color: #0a0a0a;
     color: #00ff00;
@@ -205,16 +209,40 @@ body {
 
 /* Styles for the clear cart button */
 #clear-cart-btn {
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
+    margin: 10px auto;
     padding: 10px;
-    cursor: pointer;
-    margin-top: 10px;
+    font-family: 'Courier New', monospace;
     font-size: 1rem;
+    border: 2px solid #00ff00;
+    background-color: #0a0a0a;
+    color: #00ff00;
+    outline: none;
+    text-align: center;
 }
 
 #clear-cart-btn:hover {
-    background-color: #fff;
-    color: #ff0000;
+    border-color: #fff;
+    box-shadow: 0 0 10px #00ff00;
+    text-decoration: underline;
+    cursor: pointer;
 }
+
+/* Styles for add to cart buttons */
+.add-to-cart-btn {
+    padding: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: .8rem;
+    border: 2px solid #00ff00;
+    background-color: #0a0a0a;
+    color: #00ff00;
+    outline: none;
+    text-align: center;
+}
+
+.add-to-cart-btn:hover {
+    border-color: #fff;
+    box-shadow: 0 0 10px #00ff00;
+    text-decoration: underline;
+    cursor: pointer;
+}
+

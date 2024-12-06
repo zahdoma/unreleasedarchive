@@ -7,16 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearCartBtn = document.getElementById('clear-cart-btn');
     let cart = [];
 
-    // Fetch artist and song data
     fetch('/api/artists')
         .then(response => response.json())
         .then(data => {
-            // Store the raw data for filtering
             const allData = data;
 
-            // Render artists and songs
             const renderArtists = (dataToRender, isSearching = false) => {
-                artistsContainer.innerHTML = ''; // Clear the container
+                artistsContainer.innerHTML = '';
 
                 Object.entries(dataToRender).forEach(([artist, songs]) => {
                     const artistDiv = document.createElement('div');
@@ -26,19 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const songsDiv = document.createElement('div');
                     songsDiv.classList.add('songs');
-                    songsDiv.style.display = isSearching ? 'block' : 'none'; // Auto-expand on search
+                    songsDiv.style.display = isSearching ? 'block' : 'none';
 
                     songs.forEach(song => {
                         const songDiv = document.createElement('div');
                         songDiv.classList.add('song');
 
-                        // Song name and add-to-cart button
                         const songName = document.createElement('span');
                         songName.textContent = ` ${song} `;
                         songDiv.appendChild(songName);
 
                         const addToCartBtn = document.createElement('button');
-                        addToCartBtn.textContent = 'Add to Cart';
+                        addToCartBtn.textContent = 'add to cart';
                         addToCartBtn.classList.add('add-to-cart-btn');
                         addToCartBtn.onclick = () => addToCart(artist, song);
                         songDiv.appendChild(addToCartBtn);
@@ -48,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     artistDiv.appendChild(songsDiv);
 
-                    // Toggle song list visibility when artist is clicked
                     artistDiv.addEventListener('click', () => {
                         const currentDisplay = songsDiv.style.display;
                         songsDiv.style.display = currentDisplay === 'block' ? 'none' : 'block';
@@ -56,38 +51,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             };
 
-            renderArtists(allData); // Initial render
+            renderArtists(allData);
 
-            // Search functionality
             searchBar.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
 
-                // If search box is empty, collapse all artists
                 if (searchTerm === '') {
-                    renderArtists(allData, false); // Collapse all
+                    renderArtists(allData, false);
                 } else {
-                    // Filter songs based on the search term
                     const filteredData = Object.fromEntries(
                         Object.entries(allData).map(([artist, songs]) => [
                             artist,
                             songs.filter(song => song.toLowerCase().includes(searchTerm))
-                        ]).filter(([_, songs]) => songs.length > 0) // Remove artists with no matching songs
+                        ]).filter(([_, songs]) => songs.length > 0)
                     );
 
-                    renderArtists(filteredData, true); // Re-render with filtered data and auto-expand artists
+                    renderArtists(filteredData, true);
                 }
             });
 
-            // Add a song to the cart
             const addToCart = (artist, song) => {
                 const songItem = { artist, song };
                 cart.push(songItem);
-                renderCart(); // Update the cart view
+                renderCart();
             };
 
-            // Render the cart
             const renderCart = () => {
-                // Clear the current cart display
                 cartItemsList.innerHTML = '';
 
                 if (cart.length === 0) {
@@ -97,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 cartContainer.style.display = 'block';
 
-                // Populate cart with items
                 cart.forEach((item, index) => {
                     const cartItemDiv = document.createElement('div');
                     cartItemDiv.classList.add('cart-item');
@@ -106,9 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     cartItemText.textContent = `${item.song} by ${item.artist}`;
                     cartItemDiv.appendChild(cartItemText);
 
-                    // Remove button for each cart item
                     const removeBtn = document.createElement('button');
-                    removeBtn.textContent = 'Remove';
+                    removeBtn.textContent = 'remove';
                     removeBtn.onclick = () => removeFromCart(index);
                     cartItemDiv.appendChild(removeBtn);
 
@@ -116,29 +103,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             };
 
-            // Remove a song from the cart
             const removeFromCart = (index) => {
-                cart.splice(index, 1); // Remove item from the cart array
-                renderCart(); // Re-render the cart view
+                cart.splice(index, 1);
+                renderCart();
             };
 
-            // Clear the cart
             clearCartBtn.addEventListener('click', () => {
-                cart = []; // Clear the cart array
-                renderCart(); // Re-render the cart view
+                cart = [];
+                renderCart();
             });
 
-            // Download all cart items as a zip file
             downloadCartBtn.addEventListener('click', () => {
                 if (cart.length === 0) {
-                    alert('Your cart is empty!');
                     return;
                 }
 
-                // Encode the cart data as JSON
                 const cartData = encodeURIComponent(JSON.stringify(cart));
-
-                // Redirect to download the cart as a zip
                 window.location.href = `/download-cart?cart=${cartData}`;
             });
         });
