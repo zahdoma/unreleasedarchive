@@ -162,7 +162,7 @@
 /* =========================================================
    DOWNLOAD/CLEAR CART BUTTON
    ========================================================= */
-#download-cart-btn, #clear-cart-btn { 
+#download-cart-btn, #clear-cart-btn, #connectButton { 
     margin: 10px auto; 
     padding: 10px; 
     font-family: 'Courier New', monospace; 
@@ -174,7 +174,7 @@
     text-align: center; 
 }
 
-#download-cart-btn:hover, #clear-cart-btn:hover { 
+#download-cart-btn:hover, #clear-cart-btn:hover, #connectButton:hover { 
     border-color: #fff; 
     box-shadow: 0 0 10px #00ff00; 
     text-decoration: underline; 
