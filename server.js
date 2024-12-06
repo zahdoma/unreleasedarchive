@@ -2,13 +2,17 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const archiver = require('archiver');
+
 const app = express();
 const port = 3000;
 
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
-// API endpoint to get artists and their songs
+// Utility function to check if a directory exists
+const directoryExists = (dirPath) => fs.existsSync(dirPath) && fs.lstatSync(dirPath).isDirectory();
+
+// Endpoint: Get Artists and Their Songs
 app.get('/api/artists', (req, res) => {
     const artistsDir = path.join(__dirname, 'artists');
     const data = {};
@@ -21,7 +25,7 @@ app.get('/api/artists', (req, res) => {
 
         artists.forEach(artist => {
             const artistPath = path.join(artistsDir, artist);
-            if (fs.lstatSync(artistPath).isDirectory()) {
+            if (directoryExists(artistPath)) {
                 const songs = fs.readdirSync(artistPath).filter(file => file.endsWith('.mp3'));
                 data[artist] = songs;
             }
@@ -31,10 +35,9 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
-// Endpoint to download individual songs
+// Endpoint: Download Individual Song
 app.get('/download/:artist/:song', (req, res) => {
-    const artist = req.params.artist;
-    const song = req.params.song;
+    const { artist, song } = req.params;
     const filePath = path.join(__dirname, 'artists', artist, song);
 
     if (fs.existsSync(filePath)) {
@@ -44,29 +47,30 @@ app.get('/download/:artist/:song', (req, res) => {
     }
 });
 
-// Endpoint to download multiple songs as a zip
+// Endpoint: Download Cart as a Zip File
 app.get('/download-cart', (req, res) => {
-    // Parse the cart data from the query string
-    const cart = JSON.parse(decodeURIComponent(req.query.cart));
+    try {
+        const cart = JSON.parse(decodeURIComponent(req.query.cart)); // Parse cart data
+        const zip = archiver('zip', { zlib: { level: 9 } });
 
-    // Create a new zip archive
-    const zip = archiver('zip', { zlib: { level: 9 } });
-    res.attachment('cart.zip');
-    zip.pipe(res);
+        res.attachment('cart.zip');
+        zip.pipe(res);
 
-    // Add each song to the zip
-    cart.forEach(item => {
-        const songPath = path.join(__dirname, 'artists', item.artist, item.song);
-        if (fs.existsSync(songPath)) {
-            zip.file(songPath, { name: `${item.artist}-${item.song}` });
-        }
-    });
+        cart.forEach(item => {
+            const songPath = path.join(__dirname, 'artists', item.artist, item.song);
+            if (fs.existsSync(songPath)) {
+                zip.file(songPath, { name: `${item.artist}-${item.song}` });
+            }
+        });
 
-    // Finalize the zip file and send it
-    zip.finalize();
+        zip.finalize();
+    } catch (error) {
+        console.error('Error creating zip file:', error);
+        res.status(500).send('Server error');
+    }
 });
 
-// Start the server
+// Start the Server
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
