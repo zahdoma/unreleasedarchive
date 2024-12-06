@@ -11,6 +11,13 @@
     overflow-x: hidden;
 }
 
+#wallet-status {
+    color: red;
+    font-size: .8rem;
+    padding-left: 10px;
+    display: inline-block;
+}
+
 /* =========================================================
    TITLE AND ANIMATION
    ========================================================= */
@@ -159,7 +166,7 @@
 }
 
 /* =========================================================
-   DOWNLOAD/CLEAR CART BUTTON
+   DOWNLOAD/CLEAR/CONNECT CART BUTTON
    ========================================================= */
 #download-cart-btn, #clear-cart-btn, #connectButton { 
     margin: 10px auto; 

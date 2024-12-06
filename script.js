@@ -1,14 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // DOM Elements
-    const artistsContainer = document.getElementById('artists');
-    const searchBar = document.getElementById('search-bar');
+    const connectButton = document.getElementById('connectButton');
     const downloadCartBtn = document.getElementById('download-cart-btn');
+    const walletStatusDiv = document.getElementById('wallet-status');
+    const searchBar = document.getElementById('search-bar');
     const cartContainer = document.getElementById('cart-container');
     const cartItemsList = document.getElementById('cart-items-list');
     const clearCartBtn = document.getElementById('clear-cart-btn');
+    const artistsContainer = document.getElementById('artists');
 
     // Cart Data
     let cart = [];
+    let walletPublicKey = null;
+
+    // Phantom Wallet Connection
+    const connectWallet = async () => {
+        if (window.solana && window.solana.isPhantom) {
+            try {
+                const response = await window.solana.connect();
+                walletPublicKey = response.publicKey.toString();
+                connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()}`;
+                walletStatusDiv.textContent = '';  // Clear any previous status message
+                console.log('Connected to wallet:', walletPublicKey);
+            } catch (err) {
+                console.error('Wallet connection failed:', err);
+            }
+        } else {
+            walletStatusDiv.textContent = 'phantom wallet not installed. please install it.';  // Show message next to the button
+        }
+    };
+
+    connectButton.addEventListener('click', connectWallet);
 
     // Fetch and Render Artists and Songs
     fetch('/api/artists')
@@ -142,12 +164,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCart();
             };
 
-            // Download Cart
+            // Cart and Download Logic
             const downloadCart = () => {
+                if (!walletPublicKey) {
+                    walletStatusDiv.textContent = 'please connect your wallet to download songs.';  // Show message next to the download button
+                    return;
+                }
+                // Proceed with cart download
                 if (cart.length === 0) return;
                 const cartData = encodeURIComponent(JSON.stringify(cart));
                 window.location.href = `/download-cart?cart=${cartData}`;
             };
+
+            downloadCartBtn.addEventListener('click', downloadCart);
 
             // Event Listeners
             searchBar.addEventListener('input', handleSearch);
