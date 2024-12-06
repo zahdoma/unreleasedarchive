@@ -1,179 +1,179 @@
 /* =========================================================
    GLOBAL STYLES
    ========================================================= */
-   body { /* Global body styles */
-    font-family: 'Courier New', monospace; /* Font style */
-    background-color: #0a0a0a; /* Background color */
-    color: #00ff00; /* Text color */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    text-align: center; /* Center text */
-    overflow-x: hidden; /* Hide horizontal overflow */
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #0a0a0a;
+    color: #00ff00;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
 }
 
 /* =========================================================
    TITLE AND ANIMATION
    ========================================================= */
-.retro-title { /* Retro title styles */
-    font-size: 2rem; /* Font size */
-    display: inline-block; /* Display as inline block */
+.retro-title {
+    font-size: 2rem;
+    display: inline-block;
 }
 
-.blinking-cursor { /* Blinking cursor styles */
-    display: inline-block; /* Display as inline block */
-    animation: blink 1s infinite; /* Apply blinking animation */
+.blinking-cursor { 
+    display: inline-block;
+    animation: blink 1s infinite;
 }
 
-@keyframes blink { /* Keyframe for blinking effect */
-    0%, 100% { opacity: 1; } /* Full opacity at start and end */
-    50% { opacity: 0; } /* Half opacity in the middle */
+@keyframes blink { 
+    0%, 100% { opacity: 1; } 
+    50% { opacity: 0; } 
 }
 
 /* =========================================================
    MAIN CONTAINER AND STATIC EFFECT
    ========================================================= */
-#music-container { /* Main container styles */
-    background: linear-gradient(to right, #050505 0%, #111 50%, #050505 100%); /* Gradient background */
-    box-shadow: 0 0 15px #00ff00; /* Green glow effect */
-    width: 50%; /* Width of the container */
-    margin: 20px auto; /* Centered with margin */
-    border: 2px solid #00ff00; /* Green border */
-    padding: 20px; /* Padding inside the container */
-    text-align: left; /* Align text to the left */
-    position: relative; /* Relative positioning for before element */
+#music-container { 
+    background: linear-gradient(to right, #050505 0%, #111 50%, #050505 100%); 
+    box-shadow: 0 0 15px #00ff00; 
+    width: 50%; 
+    margin: 20px auto;
+    border: 2px solid #00ff00; 
+    padding: 20px; 
+    text-align: left; 
+    position: relative; 
 }
 
-#music-container:before { /* Static noise effect in the background */
-    content: ""; /* Empty content */
-    position: absolute; /* Absolute positioning */
-    top: 0; bottom: 0; left: 0; right: 0; /* Stretch it across the container */
-    background: url('static_noise.png') repeat; /* Repeat the noise texture */
-    opacity: 0.05; /* Low opacity for a subtle effect */
-    pointer-events: none; /* Prevent interaction with the background */
+#music-container:before { 
+    content: ""; 
+    position: absolute; 
+    top: 0; bottom: 0; left: 0; right: 0; 
+    background: url('static_noise.png') repeat; 
+    opacity: 0.05;
+    pointer-events: none; 
 }
 
 /* =========================================================
    SEARCH BAR STYLES
    ========================================================= */
-#search-bar { /* Styles for search bar */
-    margin: 10px auto; /* Center the input with margin */
-    padding: 10px; /* Padding inside the input */
-    font-family: 'Courier New', monospace; /* Font family */
-    font-size: .8rem; /* Font size */
-    border: 2px solid #00ff00; /* Green border */
-    background-color: #0a0a0a; /* Dark background color */
-    color: #00ff00; /* Green text */
-    outline: none; /* Remove outline */
-    text-align: left; /* Align text to the left */
+#search-bar { 
+    margin: 10px auto; 
+    padding: 10px; 
+    font-family: 'Courier New', monospace; 
+    font-size: .8rem; 
+    border: 2px solid #00ff00; 
+    background-color: #0a0a0a; 
+    color: #00ff00; 
+    outline: none;
+    text-align: left; 
 }
 
-#search-bar:focus { /* Styles when the search bar is focused */
-    border-color: #fff; /* White border on focus */
-    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
+#search-bar:hover { 
+    border-color: #fff;
+    box-shadow: 0 0 10px #00ff00;
 }
 
 /* =========================================================
    ARTIST BOX STYLES
    ========================================================= */
-.artist { /* Artist box styles */
-    margin: 10px 0; /* Margin around each artist box */
-    padding: 10px; /* Padding inside the artist box */
-    border: 2px solid #00ff00; /* Dashed green border */
-    cursor: pointer; /* Pointer cursor on hover */
-    text-shadow: 0 0 10px #00ff00; /* Green text shadow */
-    transition: all 0.2s ease; /* Smooth transition effect */
+.artist { 
+    margin: 10px 0;
+    padding: 10px; 
+    border: 2px solid #00ff00; 
+    cursor: pointer; 
+    text-shadow: 0 0 10px #00ff00;
+    transition: all 0.2s ease; 
 }
 
-.artist:hover { /* Hover effect for artist box */
-    background-color: #000; /* Black background on hover */
-    color: #fff; /* White text on hover */
-    box-shadow: 0 0 10px #00ff00; /* Green glow effect on hover */
+.artist:hover { 
+    background-color: #000; 
+    color: #fff; 
+    box-shadow: 0 0 10px #00ff00; 
 }
 
 /* =========================================================
    SONG/CART CONTAINER (LEFT LINE), SONG/CART BLOCK, SONG/CART HOVER
    ========================================================= */
-.songs { /* Song list container styles */
-    margin: 10px 0; /* Margin around the song list */
-    padding-left: 10px; /* Padding on the left */
-    font-size: .8rem; /* Font size */
-    border-left: 2px solid #00ff00; /* Green left border */
-    display: none; /* Hidden by default */
+.songs { 
+    margin: 10px 0;
+    padding-left: 10px; 
+    font-size: .8rem;
+    border-left: 2px solid #00ff00; 
+    display: none;
 }
 
-#cart-container { /* Cart container styles */
-    margin: 10px 0; /* Margin around the song list */
-    padding-left: 10px; /* Padding on the left */
+#cart-container { 
+    margin: 10px 0; 
+    padding-left: 10px; 
     padding-right: 10px;
-    font-size: .8rem; /* Font size */
-    border: 2px dashed #00ff00; /* Green border */
-    display: none; /* Hidden by default */
-    transition: all 0.2s ease; /* Smooth transition effect */
+    font-size: .8rem; 
+    border: 2px dashed #00ff00; 
+    display: none; 
+    transition: all 0.2s ease; 
 }
 
-.song, .cart-item { /* Individual song item styles */
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out song name and button */
-    align-items: center; /* Vertically center items */
-    margin: 10px 0; /* Margin around each song item */
-    padding: 5px; /* Padding inside each song item */
-    border: 1px solid #00ff00; /* Green border */
-    background: rgba(0, 255, 0, 0.1); /* Semi-transparent green background */
-    position: relative; /* Positioning for button */
-    cursor: pointer; /* Pointer cursor on hover */
+.song, .cart-item { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin: 10px 0; 
+    padding: 5px; 
+    border: 1px solid #00ff00; 
+    background: rgba(0, 255, 0, 0.1); 
+    position: relative; 
+    cursor: pointer; 
 }
 
 .song:hover, .cart-item:hover {
-    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
+    box-shadow: 0 0 10px #00ff00; 
     color: #fff;
 }
 
 #cart-container:hover {
-    background-color: #000; /* Black background on hover */
-    color: #fff; /* White text on hover */
-    box-shadow: 0 0 10px #00ff00; /* Green glow effect on hover */
+    background-color: #000; 
+    color: #fff; 
+    box-shadow: 0 0 10px #00ff00; 
 }
 
 /* =========================================================
    ADD TO CART/REMOVE BUTTON
    ========================================================= */
-.cart-item button, .add-to-cart-btn { /* Styles for buttons in cart items */
-    padding: 5px; /* Padding inside the button */
-    font-family: 'Courier New', monospace; /* Font family */
-    font-size: .8rem; /* Font size */
-    border: none; /* Remove border */
-    background-color: transparent; /* Transparent background */
-    color: #00ff00; /* Green text */
-    outline: none; /* Remove outline */
-    text-align: center; /* Center text */
-    position: absolute; /* Position button absolutely inside song container */
-    right: 10px; /* Position to the right */
+.cart-item button, .add-to-cart-btn { 
+    padding: 5px; 
+    font-family: 'Courier New', monospace;
+    font-size: .8rem; 
+    border: none; 
+    background-color: transparent; 
+    color: #00ff00; 
+    outline: none; 
+    text-align: center;
+    position: absolute; 
+    right: 10px; 
 }
 
-.cart-item button:hover, .add-to-cart-btn:hover { /* Hover effect for cart item buttons */
-    text-decoration: underline; /* Underline text on hover */
-    color: #fff; /* Turn text black on hover */
-    cursor: pointer; /* Pointer cursor on hover */
+.cart-item button:hover, .add-to-cart-btn:hover {
+    text-decoration: underline; 
+    color: #fff;
+    cursor: pointer; 
 }
 
 /* =========================================================
    DOWNLOAD/CLEAR CART BUTTON
    ========================================================= */
-#download-cart-btn, #clear-cart-btn { /* General button styles */
-    margin: 10px auto; /* Center button with margin */
-    padding: 10px; /* Padding inside the button */
-    font-family: 'Courier New', monospace; /* Font family */
-    font-size: .8rem; /* Font size */
-    border: 2px solid #00ff00; /* Green border */
-    background-color: #0a0a0a; /* Dark background */
-    color: #00ff00; /* Green text */
-    outline: none; /* Remove outline */
-    text-align: center; /* Center text */
+#download-cart-btn, #clear-cart-btn { 
+    margin: 10px auto; 
+    padding: 10px; 
+    font-family: 'Courier New', monospace; 
+    font-size: .8rem; 
+    border: 2px solid #00ff00;
+    background-color: #0a0a0a; 
+    color: #00ff00;
+    outline: none; 
+    text-align: center; 
 }
 
-#download-cart-btn:hover, #clear-cart-btn:hover { /* Hover effects for all buttons */
-    border-color: #fff; /* White border on hover */
-    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
-    text-decoration: underline; /* Underline text on hover */
-    cursor: pointer; /* Pointer cursor on hover */
+#download-cart-btn:hover, #clear-cart-btn:hover { 
+    border-color: #fff; 
+    box-shadow: 0 0 10px #00ff00; 
+    text-decoration: underline; 
+    cursor: pointer; 
 }
