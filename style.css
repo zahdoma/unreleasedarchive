@@ -138,32 +138,35 @@
 }
 
 .cart-item { /* Individual cart item styles */
-    margin-bottom: 10px; /* Margin at the bottom of each item */
-    padding: 10px; /* Padding inside the cart item */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out song name and button */
+    align-items: center; /* Vertically center items */
+    margin: 10px 0; /* Margin around each song item */
+    padding: 5px; /* Padding inside each song item */
     border: 1px solid #00ff00; /* Green border */
-    background-color: rgba(0, 255, 0, 0.1); /* Semi-transparent green background */
-    display: flex; /* Use flexbox layout */
-    justify-content: space-between; /* Space between item description and buttons */
-    align-items: center; /* Vertically align items */
-    position: relative; /* Positioning for buttons */
+    background: rgba(0, 255, 0, 0.1); /* Semi-transparent green background */
+    position: relative; /* Positioning for button */
 }
 
+/* =========================================================
+   REMOVE BUTTON
+   ========================================================= */
 .cart-item button { /* Styles for buttons in cart items */
-    margin: 10px auto; /* Center button with margin */
-    padding: 10px; /* Padding inside the button */
+    padding: 5px; /* Padding inside the button */
     font-family: 'Courier New', monospace; /* Font family */
-    font-size: 1rem; /* Font size */
-    border: 2px solid #00ff00; /* Green border */
-    background-color: #0a0a0a; /* Dark background */
+    font-size: .8rem; /* Font size */
+    border: none; /* Remove border */
+    background-color: transparent; /* Transparent background */
     color: #00ff00; /* Green text */
     outline: none; /* Remove outline */
     text-align: center; /* Center text */
+    position: absolute; /* Position button absolutely inside song container */
+    right: 10px; /* Position to the right */
 }
 
 .cart-item button:hover { /* Hover effect for cart item buttons */
-    border-color: #fff; /* White border on hover */
-    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
     text-decoration: underline; /* Underline text on hover */
+    color: #fff; /* Turn text black on hover */
     cursor: pointer; /* Pointer cursor on hover */
 }
 
@@ -192,7 +195,7 @@
 /* =========================================================
    ADD TO CART BUTTON
    ========================================================= */
-   .add-to-cart-btn { /* Add to cart button styles */
+.add-to-cart-btn { /* Add to cart button styles */
     padding: 5px; /* Padding inside the button */
     font-family: 'Courier New', monospace; /* Font family */
     font-size: .8rem; /* Font size */
@@ -208,29 +211,5 @@
 .add-to-cart-btn:hover { /* Hover effect for add to cart button */
     text-decoration: underline; /* Underline text on hover */
     color: #fff; /* Turn text black on hover */
-    cursor: pointer; /* Pointer cursor on hover */
-}
-
-/* =========================================================
-   REMOVE BUTTON
-   ========================================================= */
-.cart-item button { /* Remove button in cart item */
-    margin: 0; /* Remove default margin */
-    padding: 5px; /* Padding inside the button */
-    font-family: 'Courier New', monospace; /* Font family */
-    font-size: .8rem; /* Font size */
-    border: 2px solid #00ff00; /* Green border */
-    background-color: #0a0a0a; /* Dark background */
-    color: #00ff00; /* Green text */
-    outline: none; /* Remove outline */
-    text-align: center; /* Center text */
-    position: absolute; /* Position button absolutely inside the cart item container */
-    right: 10px; /* Position to the right */
-}
-
-.cart-item button:hover { /* Hover effect for remove button */
-    border-color: #fff; /* White border on hover */
-    box-shadow: 0 0 10px #00ff00; /* Green glow effect */
-    text-decoration: underline; /* Underline text on hover */
     cursor: pointer; /* Pointer cursor on hover */
 }

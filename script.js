@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         songDiv.classList.add('song');
 
                         const songName = document.createElement('span');
-                        songName.textContent = ` ${song} `;
+                        songName.textContent = ` ${song.replace('.mp3', '').toLowerCase()} `;
                         songDiv.appendChild(songName);
 
                         const addToCartBtn = document.createElement('button');
@@ -78,30 +78,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const renderCart = () => {
                 cartItemsList.innerHTML = '';
-
+                
                 if (cart.length === 0) {
                     cartContainer.style.display = 'none';
                     return;
                 }
-
+                
                 cartContainer.style.display = 'block';
-
+                
                 cart.forEach((item, index) => {
                     const cartItemDiv = document.createElement('div');
                     cartItemDiv.classList.add('cart-item');
-
+                
+                    // Remove .mp3 from the song name before displaying it
                     const cartItemText = document.createElement('span');
-                    cartItemText.textContent = `${item.song} by ${item.artist}`;
+                    cartItemText.textContent = `${item.song.replace('.mp3', '').toLowerCase()} by ${item.artist}`;
                     cartItemDiv.appendChild(cartItemText);
-
+                
                     const removeBtn = document.createElement('button');
                     removeBtn.textContent = 'remove';
                     removeBtn.onclick = () => removeFromCart(index);
                     cartItemDiv.appendChild(removeBtn);
-
+                
                     cartItemsList.appendChild(cartItemDiv);
                 });
             };
+            
+            
 
             const removeFromCart = (index) => {
                 cart.splice(index, 1);
