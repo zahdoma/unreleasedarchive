@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.error('Wallet connection failed:', err);
             }
         } else {
-            walletStatusDiv.textContent = 'phantom wallet not installed. please install it.';  // Show message next to the button
+            walletStatusDiv.textContent = 'phantom wallet not installed. please install it.';  // Show message if not detected
         }
-    };
+    };    
 
     connectButton.addEventListener('click', connectWallet);
 
