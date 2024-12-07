@@ -33,18 +33,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Phantom Wallet Connection
     const connectWallet = async () => {
-        if (window.solana && window.solana.isPhantom) {
-            try {
-                showLoading('connecting to wallet...');
+        if (window.solana && window.solana.isPhantom && !walletPublicKey) {
                 const response = await window.solana.connect();
                 walletPublicKey = response.publicKey.toString();
                 connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()}`;
-                showSuccess('wallet connected');
-            } catch (err) {
-                console.error('wallet connection failed:', err);
-                showError('failed to connect wallet. Please try again.');
-            }
-        } else {
+                showError('')
+        } else if (!walletPublicKey) {
             showError('phantom wallet not installed. please install it.');
         }
     };
@@ -145,6 +139,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const addToCart = (artist, song) => {
         cart.push({ artist, song });
         renderCart();
+        showError('')
     };
 
     const removeFromCart = (index) => {
