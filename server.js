@@ -1,7 +1,9 @@
 const { S3Client, ListObjectsV2Command, GetObjectCommand } = require('@aws-sdk/client-s3');
 const express = require('express');
 const archiver = require('archiver');
+const path = require('path');
 const { Readable } = require('stream');
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
@@ -85,7 +87,14 @@ app.get('/download-cart', async (req, res) => {
     }
 });
 
-// Start the Server
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Default route: Serve index.html for `/`
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
