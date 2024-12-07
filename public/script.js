@@ -13,37 +13,49 @@ document.addEventListener('DOMContentLoaded', async () => {
     let cart = [];
     let walletPublicKey = null;
 
-    // Show loading message
-    const showLoading = (message) => {
-        walletStatusDiv.textContent = message;
-        walletStatusDiv.style.color = 'yellow';
-    };
-
     // Show error message
     const showError = (message) => {
         walletStatusDiv.textContent = message;
         walletStatusDiv.style.color = 'red';
     };
 
-    // Show success message
-    const showSuccess = (message) => {
-        walletStatusDiv.textContent = message;
-        walletStatusDiv.style.color = 'green';
-    };
+
+
+    const isPhantomInstalled = window.phantom?.solana?.isPhantom
+    const getProvider = () => {
+        if('phantom' in window) {
+            const provider = window.phantom?.solana;
+
+            if(provider?.isPhantom)
+                return provider;
+        }
+    }
 
     // Phantom Wallet Connection
     const connectWallet = async () => {
         if (window.solana && window.solana.isPhantom && !walletPublicKey) {
-                const response = await window.solana.connect();
+
+            const provider = getProvider();
+            try {
+                const response = await provider.connect();
                 walletPublicKey = response.publicKey.toString();
-                connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()}`;
-                showError('')
+            } catch (err) {
+            
+            }
+            connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()}`;
+            showError('')
+
         } else if (!walletPublicKey) {
             showError('phantom wallet not installed. please install it.');
         }
     };
 
     connectButton.addEventListener('click', connectWallet);
+
+
+
+
+
 
     // Fetch and Render Artists and Songs
     const fetchArtists = async () => {
