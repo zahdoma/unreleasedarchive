@@ -166,10 +166,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Cart and Download Logic
             const downloadCart = () => {
+                /* REQUIRE WALLET TO BE CONNECTED
                 if (!walletPublicKey) {
                     walletStatusDiv.textContent = 'please connect your wallet to download songs.';  // Show message next to the download button
                     return;
                 }
+                */
+
                 // Proceed with cart download
                 if (cart.length === 0) return;
                 const cartData = encodeURIComponent(JSON.stringify(cart));
