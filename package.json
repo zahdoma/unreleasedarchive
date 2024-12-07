@@ -10,6 +10,7 @@
     "archiver-utils": "^2.1.0",
     "array-flatten": "^1.1.1",
     "async": "^3.2.6",
+    "aws-sdk": "^2.1692.0",
     "balanced-match": "^1.0.2",
     "base64-js": "^1.5.1",
     "bl": "^4.1.0",
@@ -116,6 +117,5 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
   "description": ""
 }

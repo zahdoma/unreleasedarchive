@@ -1,64 +1,70 @@
+const AWS = require('aws-sdk');
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
 const archiver = require('archiver');
 
 const app = express();
 const port = 3000;
 
-// Serve static files
-app.use(express.static(path.join(__dirname)));
+// Configure AWS S3
+const s3 = new AWS.S3({
+    region: 'ca-central-1',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID, // Set in Render environment variables
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY // Set in Render environment variables
+});
 
-// Utility function to check if a directory exists
-const directoryExists = (dirPath) => fs.existsSync(dirPath) && fs.lstatSync(dirPath).isDirectory();
+const bucketName = 'unreleased';
 
 // Endpoint: Get Artists and Their Songs
-app.get('/api/artists', (req, res) => {
-    const artistsDir = path.join(__dirname, 'artists');
-    const data = {};
+app.get('/api/artists', async (req, res) => {
+    try {
+        const artists = {};
+        const params = { Bucket: bucketName, Prefix: 'artists/' };
+        const data = await s3.listObjectsV2(params).promise();
 
-    fs.readdir(artistsDir, (err, artists) => {
-        if (err) {
-            console.error('Error reading artists directory:', err);
-            return res.status(500).send('Server error');
-        }
+        data.Contents.forEach(item => {
+            const parts = item.Key.split('/');
+            if (parts.length === 3) {
+                const artist = parts[1];
+                const song = parts[2];
 
-        artists.forEach(artist => {
-            const artistPath = path.join(artistsDir, artist);
-            if (directoryExists(artistPath)) {
-                const songs = fs.readdirSync(artistPath).filter(file => file.endsWith('.mp3'));
-                data[artist] = songs;
+                if (!artists[artist]) {
+                    artists[artist] = [];
+                }
+                artists[artist].push(song);
             }
         });
 
-        res.json(data);
-    });
+        res.json(artists);
+    } catch (error) {
+        console.error('Error fetching artists:', error);
+        res.status(500).send('Server error');
+    }
 });
 
 // Endpoint: Download Cart as a Zip File
-app.get('/download-cart', (req, res) => {
+app.get('/download-cart', async (req, res) => {
     try {
-        const cart = JSON.parse(decodeURIComponent(req.query.cart)); // Parse cart data
+        const cart = JSON.parse(decodeURIComponent(req.query.cart));
         const zip = archiver('zip', { zlib: { level: 9 } });
 
         res.attachment('cart.zip');
         zip.pipe(res);
 
-        cart.forEach(item => {
-            const songPath = path.join(__dirname, 'artists', item.artist, item.song);
-            if (fs.existsSync(songPath)) {
-                zip.file(songPath, { name: `${item.artist}-${item.song}` });
-            }
-        });
+        for (const item of cart) {
+            const songKey = `artists/${item.artist}/${item.song}`;
+            const params = { Bucket: bucketName, Key: songKey };
 
-        zip.finalize();
+            const songStream = s3.getObject(params).createReadStream();
+            zip.append(songStream, { name: `${item.artist}-${item.song}` });
+        }
+
+        await zip.finalize();
     } catch (error) {
         console.error('Error creating zip file:', error);
         res.status(500).send('Server error');
     }
 });
 
-// Start the Server
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
