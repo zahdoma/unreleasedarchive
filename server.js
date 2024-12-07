@@ -35,18 +35,6 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
-// Endpoint: Download Individual Song
-app.get('/download/:artist/:song', (req, res) => {
-    const { artist, song } = req.params;
-    const filePath = path.join(__dirname, 'artists', artist, song);
-
-    if (fs.existsSync(filePath)) {
-        res.download(filePath);
-    } else {
-        res.status(404).send('File not found');
-    }
-});
-
 // Endpoint: Download Cart as a Zip File
 app.get('/download-cart', (req, res) => {
     try {

@@ -176,8 +176,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 window.location.href = `/download-cart?cart=${cartData}`;
             };
 
-            downloadCartBtn.addEventListener('click', downloadCart);
-
             // Event Listeners
             searchBar.addEventListener('input', handleSearch);
             clearCartBtn.addEventListener('click', clearCart);
