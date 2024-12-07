@@ -8,14 +8,14 @@ const port = 3000;
 
 // Configure AWS S3 Client
 const s3 = new S3Client({
-    region: 'your-region',
+    region: 'ca-central-1',
     credentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     }
 });
 
-const bucketName = 'your-bucket-name';
+const bucketName = 'unreleased';
 
 // Helper: Stream-to-Readable
 const streamToReadable = (stream) => {
