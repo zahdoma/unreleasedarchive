@@ -19,7 +19,9 @@ const s3 = new S3Client({
 
 const bucketName = 'unreleased';
 
-// Helper: Stream-to-Readable
+// --- Helper Functions ---
+
+// Convert stream to readable buffer
 const streamToReadable = (stream) => {
     return new Promise((resolve, reject) => {
         const chunks = [];
@@ -28,6 +30,8 @@ const streamToReadable = (stream) => {
         stream.on('error', (err) => reject(err));
     });
 };
+
+// --- Routes ---
 
 // Endpoint: Get Artists and Their Songs
 app.get('/api/artists', async (req, res) => {
@@ -66,16 +70,18 @@ app.get('/download-cart', async (req, res) => {
         const cart = JSON.parse(decodeURIComponent(req.query.cart));
         const zip = archiver('zip', { zlib: { level: 9 } });
 
+        // Set up the zip file response
         res.attachment('cart.zip');
         zip.pipe(res);
 
+        // Add each song in the cart to the zip file
         for (const item of cart) {
             const songKey = `artists/${item.artist}/${item.song}`;
             const command = new GetObjectCommand({ Bucket: bucketName, Key: songKey });
 
             const { Body } = await s3.send(command);
 
-            // Convert stream to readable buffer
+            // Convert stream to buffer and append it to the zip
             const buffer = await streamToReadable(Body);
             zip.append(buffer, { name: `${item.artist}-${item.song}` });
         }
@@ -95,6 +101,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Start the server
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
