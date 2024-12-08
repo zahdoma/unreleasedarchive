@@ -33,9 +33,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (window.solana && window.solana.isPhantom && !walletPublicKey) {
             const provider = getProvider();
 
-            const network = solanaWeb3.clusterApiUrl('mainnet-beta');
+            const network = "https://summer-alpha-haze.solana-mainnet.quiknode.pro/07d1622fe7e76082b6263be1c9d35c57f0c11ae3";
             const connection = new solanaWeb3.Connection(network);
-            const publicKey = new solanaWeb3.PublicKey('4v2XqX1CuAtUrzyTBR6qVdmcVdzUJEg5F9tpop5SiWE4');
             
             try {
                 const response = await provider.connect();
@@ -43,8 +42,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 
                 const publicKey = new solanaWeb3.PublicKey(walletPublicKey);
                 const balance = await connection.getBalance(publicKey);
-                
+
                 connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()} (${balance / 1e9}) SOL`;
+                showError('');
             } catch (err) {
                 console.error('Wallet connection failed:', err);
                 showError('failed to connect wallet. please try again.');
