@@ -19,9 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         walletStatusDiv.style.color = 'red';
     };
 
-
-
-    const isPhantomInstalled = window.phantom?.solana?.isPhantom
     const getProvider = () => {
         if('phantom' in window) {
             const provider = window.phantom?.solana;
@@ -34,28 +31,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Phantom Wallet Connection
     const connectWallet = async () => {
         if (window.solana && window.solana.isPhantom && !walletPublicKey) {
-
             const provider = getProvider();
+
+            const network = solanaWeb3.clusterApiUrl('mainnet-beta');
+            const connection = new solanaWeb3.Connection(network);
+            const publicKey = new solanaWeb3.PublicKey('4v2XqX1CuAtUrzyTBR6qVdmcVdzUJEg5F9tpop5SiWE4');
+            
             try {
                 const response = await provider.connect();
                 walletPublicKey = response.publicKey.toString();
+                
+                const publicKey = new solanaWeb3.PublicKey(walletPublicKey);
+                const balance = await connection.getBalance(publicKey);
+                
+                connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()} (${balance / 1e9}) SOL`;
             } catch (err) {
-            
+                console.error('Wallet connection failed:', err);
+                showError('failed to connect wallet. please try again.');
             }
-            connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()}`;
-            showError('')
-
         } else if (!walletPublicKey) {
             showError('phantom wallet not installed. please install it.');
         }
     };
-
+    
     connectButton.addEventListener('click', connectWallet);
-
-
-
-
-
 
     // Fetch and Render Artists and Songs
     const fetchArtists = async () => {
