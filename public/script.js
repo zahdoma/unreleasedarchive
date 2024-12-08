@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const publicKey = new solanaWeb3.PublicKey(walletPublicKey);
                 const balance = await connection.getBalance(publicKey);
 
-                connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()} (${balance / 1e9}) SOL`;
+                connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()} (${(balance / 1e9).toFixed(3)}) SOL`;
                 showError('');
             } catch (err) {
                 console.error('Wallet connection failed:', err);
