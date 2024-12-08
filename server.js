@@ -6,7 +6,44 @@ const { Readable } = require('stream');
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
+const port = 5000;
+
+const { Connection, PublicKey } = require('@solana/web3.js');
+const { getAssociatedTokenAddress, getAccount } = require('@solana/spl-token');
+
+const connection = new Connection('https://summer-alpha-haze.solana-mainnet.quiknode.pro/07d1622fe7e76082b6263be1c9d35c57f0c11ae3');
+
+app.get('/get-balance', async (req, res) => {
+    const { wallet, mint } = req.query;
+  
+    if (!wallet || !mint) {
+      return res.status(400).send({ error: 'Missing wallet or mint address.' });
+    }
+  
+    try {
+      const walletPublicKey = new PublicKey(wallet);
+      const tokenMintPublicKey = new PublicKey(mint);
+  
+      // Get associated token address for the given mint and wallet
+      const associatedTokenAddress = await getAssociatedTokenAddress(
+        tokenMintPublicKey,
+        walletPublicKey
+      );
+  
+      // Get account info for the associated token address
+      const accountInfo = await getAccount(connection, associatedTokenAddress);
+      const amount = accountInfo.amount.toString();
+  
+      res.send({ amount });
+    } catch (error) {
+      console.error("Error fetching balance:", error);  // Log the error to the server
+      if (error.message.includes("AccountNotFound")) {
+        res.status(404).send({ error: 'Token account not found for this wallet.' });
+      } else {
+        res.status(500).send({ error: 'Failed to fetch balance: ' + error.message });
+      }
+    }
+  });
 
 // Configure AWS S3 Client
 const s3 = new S3Client({

@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // DOM Elements
-    const connectButton = document.getElementById('connectButton');
     const downloadCartBtn = document.getElementById('download-cart-btn');
     const walletStatusDiv = document.getElementById('wallet-status');
     const searchBar = document.getElementById('search-bar');
@@ -28,33 +27,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Phantom Wallet Connection
-    const connectWallet = async () => {
-        if (window.solana && window.solana.isPhantom && !walletPublicKey) {
-            const provider = getProvider();
-
-            const network = "https://summer-alpha-haze.solana-mainnet.quiknode.pro/07d1622fe7e76082b6263be1c9d35c57f0c11ae3";
-            const connection = new solanaWeb3.Connection(network);
-            
-            try {
-                const response = await provider.connect();
-                walletPublicKey = response.publicKey.toString();
-                
-                const publicKey = new solanaWeb3.PublicKey(walletPublicKey);
-                const balance = await connection.getBalance(publicKey);
-
-                connectButton.textContent = `wallet: ${walletPublicKey.slice(0, 4).toLowerCase()}...${walletPublicKey.slice(-4).toLowerCase()} (${(balance / 1e9).toFixed(3)}) SOL`;
-                showError('');
-            } catch (err) {
-                console.error('Wallet connection failed:', err);
-                showError('failed to connect wallet. please try again.');
-            }
-        } else if (!walletPublicKey) {
-            showError('phantom wallet not installed. please install it.');
+    document.getElementById('connectButton').addEventListener('click', async () => {
+        try {
+          if (!window.solana || !window.solana.isPhantom) {
+            alert("Please install the Phantom Wallet extension.");
+            return;
+          }
+      
+          const response = await window.solana.connect();
+          const publicKey = response.publicKey.toString();
+          console.log("Connected to:", publicKey);
+      
+          // Replace with your backend endpoint
+          const tokenMintAddress = "D3QiRT12vKBpj87h99ufQFz4mCpbPC7JVy1U6NRKpump";
+          const balance = await fetch(`/get-balance?wallet=${publicKey}&mint=${tokenMintAddress}`)
+            .then((res) => res.json());
+      
+          connectButton.textContent = `wallet: ${(balance.amount / 1e6).toFixed(5)}`;
+        } catch (error) {
+          console.error("Error connecting to Phantom Wallet:", error);
         }
-    };
-    
-    connectButton.addEventListener('click', connectWallet);
+      });
 
     // Fetch and Render Artists and Songs
     const fetchArtists = async () => {
