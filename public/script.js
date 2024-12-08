@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     // Cart and Download Logic
-    const downloadCart = () => {
+    const downloadCart = async () => {
         if (!walletPublicKey) {
             showError('connect your wallet to download songs.');
             return;
@@ -208,8 +208,26 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        const cartData = encodeURIComponent(JSON.stringify(cart));
-        window.location.href = `/download-cart?cart=${cartData}`;
+        const network = "https://summer-alpha-haze.solana-mainnet.quiknode.pro/07d1622fe7e76082b6263be1c9d35c57f0c11ae3";
+        const connection = new solanaWeb3.Connection(network);
+        const publicKey = new solanaWeb3.PublicKey(walletPublicKey);
+        
+        try {
+            const balance = await connection.getBalance(publicKey);
+            const requiredSol = 1; // Change this value to the required SOL amount
+    
+            if (balance < requiredSol * 1e9) { // Convert SOL to lamports (1 SOL = 1e9 lamports)
+                showError(`you need at least ${requiredSol} sol to download.`);
+                return;
+            }
+    
+            // If balance is sufficient, proceed to download
+            const cartData = encodeURIComponent(JSON.stringify(cart));
+            window.location.href = `/download-cart?cart=${cartData}`;
+        } catch (error) {
+            console.error('Error checking balance:', error);
+            showError('failed to check wallet balance. please try again later.');
+        }
     };
 
     // Event Listeners
