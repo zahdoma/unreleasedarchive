@@ -26,6 +26,7 @@ hr {
     font-size: .8rem;
     margin-left: 10px;
     padding-left: 10px;
+    padding-right: 10px;
     display: inline-block;
     text-align: center;
     border-left: 1px dashed red;
