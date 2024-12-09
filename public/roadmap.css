@@ -6,43 +6,41 @@ body {
     padding: 0;
     text-align: center;
     overflow-x: hidden;
+    user-select: none;
 }
 
-.container { 
-    background: linear-gradient(to right, #050505 0%, #111 50%, #050505 100%); 
-    box-shadow: 0 0 15px #00ff00; 
-    width: 80%; 
+.container {
+    background: linear-gradient(to right, #050505 0%, #111 50%, #050505 100%);
+    box-shadow: 0 0 15px #00ff00;
+    width: 80%;
     max-width: 1200px;
     margin: 20px auto;
-    border: 2px solid #00ff00; 
-    padding: 20px; 
-    text-align: left; 
-    position: relative; 
+    border: 2px solid #00ff00;
+    padding: 20px;
+    text-align: left;
+    position: relative;
 }
 
 header {
+    font-size: .9em;
     text-align: center;
     margin-bottom: 40px;
 }
 
-header h1 {
-    font-size: 2.8em;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 1.4em;
-    color: #0f0;
-    opacity: 0.8;
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #00ff00;
+    text-shadow: 0 0 15px #00ff00;
 }
 
 h2 {
-    font-size: 2em;
-    margin-top: 10px;
+    font-size: 1.8em;
+    margin-top: 20px;
     margin-bottom: 10px;
     color: #00ff00;
     text-shadow: 0 0 15px #00ff00;
+    cursor: pointer;
 }
 
 ul {
@@ -63,18 +61,32 @@ strong {
 
 .phase {
     text-align: center;
-    margin-bottom: 25px;
-    padding: 15px; 
-    border: 2px solid #00ff00; 
-    cursor: pointer; 
+    margin-bottom: 10px;
+    border: 2px solid #00ff00;
+    cursor: pointer;
     text-shadow: 0 0 10px #00ff00;
-    transition: all 0.2s ease; 
+    transition: all 0.2s ease;
+    width: auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.phase.expanded {
+    background-color: #333;
+    color: #fff;
 }
 
 .phase:hover {
-    background-color: #000; 
-    color: #fff; 
-    box-shadow: 0 0 10px #00ff00; 
+    background-color: #000;
+    color: #fff;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.phase-content {
+    display: block;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
 footer {

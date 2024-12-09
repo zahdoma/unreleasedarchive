@@ -15,42 +15,50 @@
         </header>
 
         <main>
-            <section class="phase">
+            <section class="phase" onclick="toggleContent('launch-week')">
                 <h2>launch week: day 1-7</h2>
-                <ul>
-                    <li><strong>Website and Token Go Live:</strong> Announce and open access.</li>
-                    <li><strong>Marketing Push:</strong> Collaborate with influencers and run promotions.</li>
-                    <li><strong>Community Kickoff:</strong> Host launch events and build engagement.</li>
-                </ul>
+                <div id="launch-week" class="phase-content">
+                    <ul>
+                        <li><strong>website and token go live:</strong> announce and open access.</li>
+                        <li><strong>community push:</strong> collaborate with the community to grow the libary.</li>
+                        <li><strong>Community Kickoff:</strong> collect community funding for the purchase of new leaks.</li>
+                    </ul>
+                </div>
             </section>
 
-            <section class="phase">
+            <section class="phase" onclick="toggleContent('phase-1')">
                 <h2>Phase 1: Post-Launch (Month 1-2)</h2>
-                <ul>
-                    <li><strong>Stabilize Platform:</strong> Monitor traffic, fix bugs, and gather feedback.</li>
-                    <li><strong>Expand Content Library:</strong> Onboard more artists and tracks.</li>
-                    <li><strong>Token Accessibility:</strong> List $UNR on a DEX and educate users.</li>
-                    <li><strong>Community Building:</strong> Start token-gated activities and rewards.</li>
-                </ul>
+                <div id="phase-1" class="phase-content">
+                    <ul>
+                        <li><strong>Stabilize Platform:</strong> Monitor traffic, fix bugs, and gather feedback.</li>
+                        <li><strong>Expand Content Library:</strong> Onboard more artists and tracks.</li>
+                        <li><strong>Token Accessibility:</strong> List $UNR on a DEX and educate users.</li>
+                        <li><strong>Community Building:</strong> Start token-gated activities and rewards.</li>
+                    </ul>
+                </div>
             </section>
 
-            <section class="phase">
+            <section class="phase" onclick="toggleContent('phase-2')">
                 <h2>Phase 2: Growth (Month 3-6)</h2>
-                <ul>
-                    <li><strong>Enhanced Features:</strong> Add tiered access levels and analytics for artists.</li>
-                    <li><strong>Broaden Partnerships:</strong> Collaborate with music and Solana ecosystem partners.</li>
-                    <li><strong>Marketing Campaigns:</strong> Launch themed promotions and sponsorships.</li>
-                </ul>
+                <div id="phase-2" class="phase-content">
+                    <ul>
+                        <li><strong>Enhanced Features:</strong> Add tiered access levels and analytics for artists.</li>
+                        <li><strong>Broaden Partnerships:</strong> Collaborate with music and Solana ecosystem partners.</li>
+                        <li><strong>Marketing Campaigns:</strong> Launch themed promotions and sponsorships.</li>
+                    </ul>
+                </div>
             </section>
 
-            <section class="phase">
+            <section class="phase" onclick="toggleContent('phase-3')">
                 <h2>Phase 3: Maturity (Month 7-12)</h2>
-                <ul>
-                    <li><strong>Expand Token Utility:</strong> Introduce staking and tipping features.</li>
-                    <li><strong>Optimize Scalability:</strong> Scale infrastructure and enhance security.</li>
-                    <li><strong>Broaden Content Options:</strong> Add playlists and live-streamed sessions.</li>
-                    <li><strong>Global Outreach:</strong> Translate platform and onboard international artists.</li>
-                </ul>
+                <div id="phase-3" class="phase-content">
+                    <ul>
+                        <li><strong>Expand Token Utility:</strong> Introduce staking and tipping features.</li>
+                        <li><strong>Optimize Scalability:</strong> Scale infrastructure and enhance security.</li>
+                        <li><strong>Broaden Content Options:</strong> Add playlists and live-streamed sessions.</li>
+                        <li><strong>Global Outreach:</strong> Translate platform and onboard international artists.</li>
+                    </ul>
+                </div>
             </section>
         </main>
 
@@ -58,5 +66,19 @@
             <p>© 2024 $UNR. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const phase = content.closest('.phase');
+            if (content.style.maxHeight === "0px" || content.style.maxHeight === "") {
+                content.style.maxHeight = content.scrollHeight + "px";
+                phase.classList.add('expanded');
+            } else {
+                content.style.maxHeight = "0px";
+                phase.classList.remove('expanded');
+            }
+        }
+    </script>
 </body>
 </html>
