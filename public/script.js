@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', async () => {
    ========================================================= */
     const showError = (message) => {
         walletStatusDiv.textContent = message;
-        walletStatusDiv.style.color = 'red';
     };
 
     document.getElementById('connectButton').addEventListener('click', async () => {
@@ -38,6 +37,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Update the button with balance
             const connectButton = document.getElementById('connectButton');
             connectButton.textContent = `balance: ${(balance.amount / 1e6).toFixed(5)}`;
+
+            showError('')
         } catch (error) {
             walletStatusDiv.textContent = "failed to connect. please try again.";
             walletStatusDiv.style.color = 'red';
