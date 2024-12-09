@@ -1,0 +1,121 @@
+{
+  "main": {
+    "id": "55c9b3a26b9eb1d8",
+    "type": "split",
+    "children": [
+      {
+        "id": "c266390e920cf5b7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1cd152e2da604129",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "58163edebec08ce9",
+    "type": "split",
+    "children": [
+      {
+        "id": "6abd648647e47398",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "71cf5a4b66b3642c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "67436a5f0c870d7a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "0a3f488d27b9a974",
+    "type": "split",
+    "children": [
+      {
+        "id": "369b14610d8d6402",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4264232910d508d4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "unreleased.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from unreleased"
+            }
+          },
+          {
+            "id": "fd604df04d52be79",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "daily-notes:Open today's daily note": false,
+      "obsidian-kanban:Create new board": false
+    }
+  },
+  "active": "1cd152e2da604129",
+  "lastOpenFiles": [
+    "Untitled Kanban.md",
+    "unreleased.md",
+    "Untitled.canvas",
+    "2024-12-08.md",
+    "Welcome.md"
+  ]
+}
