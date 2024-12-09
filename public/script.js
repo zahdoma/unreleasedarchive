@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // DOM Elements
     const downloadCartBtn = document.getElementById('download-cart-btn');
     const walletStatusDiv = document.getElementById('wallet-status');
     const searchBar = document.getElementById('search-bar');
@@ -8,12 +7,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const clearCartBtn = document.getElementById('clear-cart-btn');
     const artistsContainer = document.getElementById('artists');
 
-    // Cart Data
     let cart = [];
     let walletPublicKey = null;
-    let allData = {}; // Store the artists and songs data globally
+    let allData = {};
 
-    // Show error message
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
     const showError = (message) => {
         walletStatusDiv.textContent = message;
         walletStatusDiv.style.color = 'red';
@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             walletPublicKey = response.publicKey.toString();
             console.log("connected to:", walletPublicKey);
 
-            // Replace with your backend endpoint to fetch token balance
             const tokenMintAddress = "D3QiRT12vKBpj87h99ufQFz4mCpbPC7JVy1U6NRKpump";
 
             const balance = await fetch(`/get-balance?wallet=${walletPublicKey}&mint=${tokenMintAddress}`)
@@ -45,7 +44,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // Fetch and Render Artists and Songs
+/* =========================================================
+   FETCH/RENDER ARTISTS AND SONGS
+   ========================================================= */
     const fetchArtists = async () => {
         try {
             const response = await fetch('/api/artists');
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             allData = data; // Store fetched data globally
             renderArtists(data); // Render artists by default
         } catch (error) {
-            console.error('Error fetching artists:', error);
+            console.error('error fetching artists:', error);
             showError('failed to load artists. please try again later.');
         }
     };
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         artistsContainer.innerHTML = '';
 
         if (Object.keys(data).length === 0) {
-            artistsContainer.innerHTML = '<p>No artists found.</p>';
+            artistsContainer.innerHTML = '<p>no artists found.</p>';
         } else {
             Object.entries(data).forEach(([artist, songs]) => {
                 const artistDiv = createArtistElement(artist, songs);
@@ -71,7 +72,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    // Create Artist and Songs UI
+/* =========================================================
+   CREATE ARTIST UI
+   ========================================================= */
     const createArtistElement = (artist, songs) => {
         const artistDiv = document.createElement('div');
         artistDiv.classList.add('artist');
@@ -79,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const songsDiv = document.createElement('div');
         songsDiv.classList.add('songs');
-        songsDiv.style.display = 'none'; // Initially hide songs
+        songsDiv.style.display = 'none';
 
         songs.forEach((song) => {
             const songDiv = createSongElement(artist, song);
@@ -92,7 +95,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         return artistDiv;
     };
 
-    // Create Song UI
+/* =========================================================
+   CREATE SONG UI
+   ========================================================= */
     const createSongElement = (artist, song) => {
         const songDiv = document.createElement('div');
         songDiv.classList.add('song');
@@ -110,17 +115,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         return songDiv;
     };
 
-    // Toggle Display Helper (for showing/hiding songs under an artist)
     const toggleDisplay = (element) => {
         element.style.display = element.style.display === 'block' ? 'none' : 'block';
     };
 
-    // Handle Search
+/* =========================================================
+   SEARCH
+   ========================================================= */
     const handleSearch = (e) => {
         const searchTerm = e.target.value.toLowerCase();
 
         if (!searchTerm) {
-            renderArtists(allData); // Show artists and songs if search is empty
+            renderArtists(allData);
             return;
         }
 
@@ -129,27 +135,29 @@ document.addEventListener('DOMContentLoaded', async () => {
                 artist,
                 songs: songs.filter(song => song.toLowerCase().includes(searchTerm)),
             }))
-            .filter(({ songs }) => songs.length > 0); // Only keep artists with matching songs
+            .filter(({ songs }) => songs.length > 0);
 
-        renderSearchResults(filteredSongs); // Show only filtered songs
+        renderSearchResults(filteredSongs);
     };
 
     const renderSearchResults = (filteredArtists) => {
         artistsContainer.innerHTML = '';
     
         if (filteredArtists.length === 0) {
-            artistsContainer.innerHTML = '<p>No songs found.</p>';
+            artistsContainer.innerHTML = '<p>no songs found...</p>';
         } else {
             filteredArtists.forEach(({ artist, songs }) => {
                 songs.forEach((song) => {
                     const songDiv = createSongElement(artist, song);
-                    artistsContainer.appendChild(songDiv); // Only append songs
+                    artistsContainer.appendChild(songDiv);
                 });
             });
         }
     };
 
-    // Cart Functions
+/* =========================================================
+   CART FUNCTIONS
+   ========================================================= */
     const addToCart = (artist, song) => {
         cart.push({ artist, song });
         renderCart();
@@ -158,6 +166,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const removeFromCart = (index) => {
         cart.splice(index, 1);
+        renderCart();
+    };
+
+    const clearCart = () => {
+        cart = [];
         renderCart();
     };
 
@@ -177,9 +190,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     };
 
+/* =========================================================
+   CREATE CART UI
+   ========================================================= */
     const createCartItemElement = (item, index) => {
         const cartItemDiv = document.createElement('div');
-        cartItemDiv.classList.add('cart-item');
+        cartItemDiv.classList.add('remove-from-cart-btn');
 
         const cartItemText = document.createElement('span');
         cartItemText.textContent = `${item.song.replace('.mp3', '').toLowerCase()} by ${item.artist}`;
@@ -193,13 +209,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         return cartItemDiv;
     };
 
-    // Clear Cart
-    const clearCart = () => {
-        cart = [];
-        renderCart();
-    };
-
-    // CART DOWNLOAD
+/* =========================================================
+   DOWNLOAD CART
+   ========================================================= */
     const downloadCart = async () => {
         if (!walletPublicKey) {
             showError('connect your wallet to download songs.');
@@ -215,7 +227,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const requiredTokenAmount = 3000; // Replace with the required amount of tokens
 
         try {
-            // Fetch the token balance for the connected wallet
             const response = await fetch(`/get-balance?wallet=${walletPublicKey}&mint=${tokenMintAddress}`);
             const balance = await response.json();
 
@@ -224,7 +235,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             }
 
-            // If token balance is sufficient, proceed to download
             const cartData = encodeURIComponent(JSON.stringify(cart));
             window.location.href = `/download-cart?cart=${cartData}`;
         } catch (error) {
@@ -233,11 +243,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    // Event Listeners
+/* =========================================================
+   EVENT LISENTERS
+   ========================================================= */
     searchBar.addEventListener('input', handleSearch);
     clearCartBtn.addEventListener('click', clearCart);
     downloadCartBtn.addEventListener('click', downloadCart);
 
-    // Initial Fetch Artists
+/* =========================================================
+   INITIAL FETCH ARTISTS
+   ========================================================= */
     fetchArtists();
 });

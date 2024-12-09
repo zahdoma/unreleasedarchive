@@ -12,6 +12,12 @@
     user-select: none;
 }
 
+hr {
+    border: 0;
+    border-top: 2px solid #00ff00;
+    box-shadow: 0 0 20px #00ff00;
+  }
+
 #wallet-status {
     color: red;
     font-size: .8rem;
@@ -54,7 +60,7 @@
 }
 
 /* =========================================================
-   SEARCH BAR STYLES
+   SEARCH BAR
    ========================================================= */
 #search-bar { 
     margin: 10px auto; 
@@ -76,10 +82,10 @@
 
 
 /* =========================================================
-   ARTIST BOX STYLES
+   ARTIST BOX
    ========================================================= */
 .artist { 
-    margin: 10px 0;
+    margin-top: 20px;
     padding: 10px; 
     border: 2px solid #00ff00; 
     cursor: pointer; 
@@ -115,7 +121,7 @@
     transition: all 0.2s ease; 
 }
 
-.song, .cart-item { 
+.song, .remove-from-cart-btn{ 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -127,22 +133,15 @@
     cursor: pointer; 
 }
 
-.song:hover, .cart-item:hover, #cart-container:hover {
+.song:hover, .remove-from-cart-btn:hover, #cart-container:hover {
     box-shadow: 0 0 10px #00ff00; 
     color: #fff;
 }
 
-/* #cart-container:hover {
-    background-color: #000; 
-    color: #fff; 
-    box-shadow: 0 0 10px #00ff00; 
-} */
-
-
 /* =========================================================
    ADD TO CART/REMOVE BUTTON
    ========================================================= */
-.cart-item button, .add-to-cart-btn { 
+.remove-from-cart-btn button, .add-to-cart-btn { 
     padding: 5px; 
     font-family: 'Courier New', monospace;
     font-size: .8rem; 
@@ -155,7 +154,7 @@
     right: 10px; 
 }
 
-.cart-item button:hover, .add-to-cart-btn:hover {
+.remove-from-cart-btn button:hover, .add-to-cart-btn:hover {
     text-decoration: underline; 
     color: #fff;
     cursor: pointer; 
