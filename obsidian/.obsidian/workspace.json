@@ -11,10 +11,20 @@
             "id": "1cd152e2da604129",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "kanban",
+              "state": {
+                "file": "unreleased.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              },
+              "icon": "lucide-trello",
+              "title": "unreleased"
             }
           }
         ]
@@ -59,7 +69,8 @@
               "title": "Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -112,10 +123,10 @@
   },
   "active": "1cd152e2da604129",
   "lastOpenFiles": [
-    "Untitled Kanban.md",
-    "unreleased.md",
-    "Untitled.canvas",
     "2024-12-08.md",
+    "unreleased.md",
+    "Untitled Kanban.md",
+    "Untitled.canvas",
     "Welcome.md"
   ]
 }

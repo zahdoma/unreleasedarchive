@@ -100,7 +100,6 @@ hr {
     border: 2px solid #00ff00; 
     cursor: pointer; 
     text-shadow: 0 0 10px #00ff00;
-    transition: all 0.2s ease; 
 }
 
 #artists p {
