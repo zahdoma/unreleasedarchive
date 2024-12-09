@@ -12,11 +12,6 @@
     user-select: none;
 }
 
-.title-container h1{
-    margin-top: auto;
-    margin-bottom: 20px;
-}
-
 hr {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -54,6 +49,11 @@ hr {
 /* =========================================================
    TITLE AND BLINKING CURSOR
    ========================================================= */
+   .title-container p{
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
 .retro-title {
     font-size: 2rem;
     display: inline-block;
