@@ -29,25 +29,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('connectButton').addEventListener('click', async () => {
         try {
-          if (!window.solana || !window.solana.isPhantom) {
-            alert("Please install the Phantom Wallet extension.");
-            return;
-          }
-      
-          const response = await window.solana.connect();
-          const publicKey = response.publicKey.toString();
-          console.log("Connected to:", publicKey);
-      
-          // Replace with your backend endpoint
-          const tokenMintAddress = "D3QiRT12vKBpj87h99ufQFz4mCpbPC7JVy1U6NRKpump";
-          const balance = await fetch(`/get-balance?wallet=${publicKey}&mint=${tokenMintAddress}`)
-            .then((res) => res.json());
-      
-          connectButton.textContent = `wallet: ${(balance.amount / 1e6).toFixed(5)}`;
+            if (!window.solana || !window.solana.isPhantom) {
+                alert("Please install the Phantom Wallet extension.");
+                return;
+            }
+    
+            const response = await window.solana.connect();
+            walletPublicKey = response.publicKey.toString();
+            console.log("Connected to:", walletPublicKey);
+    
+            // Replace with your backend endpoint to fetch token balance
+            const tokenMintAddress = "D3QiRT12vKBpj87h99ufQFz4mCpbPC7JVy1U6NRKpump";
+            
+            const balance = await fetch(`/get-balance?wallet=${walletPublicKey}&mint=${tokenMintAddress}`)
+                .then((res) => res.json());
+    
+            // Update the button with balance
+            const connectButton = document.getElementById('connectButton');
+            connectButton.textContent = `balance: ${(balance.amount / 1e6).toFixed(5)}`;
         } catch (error) {
-          console.error("Error connecting to Phantom Wallet:", error);
+            walletStatusDiv.textContent = "failed to connect. please try again.";
+            walletStatusDiv.style.color = 'red';
         }
-      });
+    });
 
     // Fetch and Render Artists and Songs
     const fetchArtists = async () => {
