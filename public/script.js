@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('connectButton').addEventListener('click', async () => {
         try {
             if (!window.solana || !window.solana.isPhantom) {
-                alert("Please install the Phantom Wallet extension.");
+                showError('please install the phantom wallet extension.');
                 return;
             }
     
             const response = await window.solana.connect();
             walletPublicKey = response.publicKey.toString();
-            console.log("Connected to:", walletPublicKey);
+            console.log("connected to:", walletPublicKey);
     
             // Replace with your backend endpoint to fetch token balance
             const tokenMintAddress = "D3QiRT12vKBpj87h99ufQFz4mCpbPC7JVy1U6NRKpump";
@@ -197,12 +197,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // CART DOWNLOAD
 const downloadCart = async () => {
     if (!walletPublicKey) {
-        showError('Connect your wallet to download songs.');
+        showError('connect your wallet to download songs.');
         return;
     }
 
     if (cart.length === 0) {
-        showError('Your cart is empty.');
+        showError('your cart is empty.');
         return;
     }
 
