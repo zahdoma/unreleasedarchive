@@ -164,8 +164,8 @@ hr {
 /* =========================================================
    DOWNLOAD/CLEAR/CONNECT CART BUTTON
    ========================================================= */
-#download-cart-btn, #clear-cart-btn, #connectButton, .roadmap-btn { 
-    margin: 10px auto; 
+#download-cart-btn, #clear-cart-btn, #connectButton, .roadmap-btn, .about-btn { 
+    
     padding: 10px; 
     font-family: 'Courier New', monospace; 
     font-size: .8rem; 
@@ -176,14 +176,14 @@ hr {
     text-align: center; 
 }
 
-#download-cart-btn:hover, #clear-cart-btn:hover, #connectButton:hover, .roadmap-btn:hover { 
+#download-cart-btn:hover, #clear-cart-btn:hover, #connectButton:hover, .roadmap-btn:hover, .about-btn:hover { 
     border-color: #fff; 
     box-shadow: 0 0 10px #00ff00; 
     text-decoration: underline; 
     cursor: pointer; 
 }
 
-.roadmap-btn a {
+.roadmap-btn a, .about-btn a {
     color: inherit;
     text-decoration: none;
 }
@@ -206,7 +206,7 @@ hr {
         width: 90%;
     }
 
-    #download-cart-btn, #clear-cart-btn, #connectButton {
+    #download-cart-btn, #clear-cart-btn, #connectButton, .roadmap-btn, .about-btn {
         font-size: 1rem;
         padding: 12px;
     }
@@ -236,7 +236,7 @@ hr {
         width: 100%;
     }
 
-    #download-cart-btn, #clear-cart-btn, #connectButton {
+    #download-cart-btn, #clear-cart-btn, #connectButton, .roadmap-btn, .about-btn {
         font-size: 1.2rem;
         padding: 14px;
     }

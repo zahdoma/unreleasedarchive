@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/unreleased Roadmap</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>/unreleased roadmap</h1>
+            <p>the hub for unreleased music.</p>
+        </header>
+
+        <main>
+            <section class="phase" onclick="toggleContent('about')">
+                <h2>about</h2>
+                <div id="about" class="phase-content">
+                    <ul>
+                        <p>we aggregate the music</p>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="phase" onclick="toggleContent('phase-1')">
+                <h2>faq</h2>
+                <div id="phase-1" class="phase-content">
+                    <ul>
+                        <li><strong>announcement & open access:</strong> announce the platform on social media and open access to $UNR holders.</li>
+                        <li><strong>monitor traffic & feedback:</strong> monitor traffic, fix bugs, and collect user feedback for continuous improvement.</li>
+                        <li><strong>community engagement:</strong> create a community space for users to share feedback, suggest features, and help shape the platform.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 $UNR.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const phase = content.closest('.phase');
+            if (content.style.maxHeight === "0px" || content.style.maxHeight === "") {
+                content.style.maxHeight = content.scrollHeight + "px";
+                phase.classList.add('expanded');
+            } else {
+                content.style.maxHeight = "0px";
+                phase.classList.remove('expanded');
+            }
+        }
+    </script>
+</body>
+</html>
