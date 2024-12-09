@@ -46,7 +46,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#red",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,8 +69,7 @@
               "title": "Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -121,7 +120,7 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "1cd152e2da604129",
+  "active": "71cf5a4b66b3642c",
   "lastOpenFiles": [
     "2024-12-08.md",
     "unreleased.md",

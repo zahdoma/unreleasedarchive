@@ -1,3 +1,32 @@
 {
-  "show-checkboxes": true
+  "show-checkboxes": true,
+  "move-tags": true,
+  "tag-sort": [
+    {
+      "tag": "#red"
+    },
+    {
+      "tag": "#yellow"
+    },
+    {
+      "tag": "#green"
+    }
+  ],
+  "tag-colors": [
+    {
+      "tagKey": "#red",
+      "color": "",
+      "backgroundColor": "rgba(255, 41, 41, 1)"
+    },
+    {
+      "tagKey": "#yellow",
+      "color": "",
+      "backgroundColor": "rgba(242, 255, 59, 1)"
+    },
+    {
+      "tagKey": "#green",
+      "color": "",
+      "backgroundColor": "rgba(93, 245, 111, 1)"
+    }
+  ]
 }

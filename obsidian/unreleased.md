@@ -4,11 +4,12 @@ kanban-plugin: board
 
 ---
 
-## To do
+## To do #new-tag
 
 - [ ] fix pixelation bug when opening artist
 - [ ] finish about page
 - [ ] finish roadmap page
+- [ ] add bonding curve feature
 
 
 ## Doing
