@@ -18,15 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         walletStatusDiv.style.color = 'red';
     };
 
-    const getProvider = () => {
-        if('phantom' in window) {
-            const provider = window.phantom?.solana;
-
-            if(provider?.isPhantom)
-                return provider;
-        }
-    }
-
     document.getElementById('connectButton').addEventListener('click', async () => {
         try {
             if (!window.solana || !window.solana.isPhantom) {
