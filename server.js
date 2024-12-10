@@ -1,8 +1,6 @@
 const { S3Client, ListObjectsV2Command, GetObjectCommand } = require('@aws-sdk/client-s3');
 const express = require('express');
 const archiver = require('archiver');
-const bodyParser = require('body-parser');
-const session = require('express-session');
 const path = require('path');
 const { Readable } = require('stream');
 require('dotenv').config();
@@ -15,6 +13,9 @@ const { getAssociatedTokenAddress, getAccount } = require('@solana/spl-token');
 
 const connection = new Connection('https://summer-alpha-haze.solana-mainnet.quiknode.pro/07d1622fe7e76082b6263be1c9d35c57f0c11ae3');
 
+/* =========================================================
+GET BALANCE
+========================================================= */
 app.get('/get-balance', async (req, res) => {
     const { wallet, mint } = req.query;
   
@@ -47,6 +48,9 @@ app.get('/get-balance', async (req, res) => {
     }
   });
 
+/* =========================================================
+AWS
+========================================================= */
 // Configure AWS S3 Client
 const s3 = new S3Client({
     region: 'ca-central-1',
@@ -55,11 +59,11 @@ const s3 = new S3Client({
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     }
 });
-
 const bucketName = 'unreleased';
 
-// --- Helper Functions ---
-
+/* =========================================================
+HELPER FUNCTIONS
+========================================================= */
 // Convert stream to readable buffer
 const streamToReadable = (stream) => {
     return new Promise((resolve, reject) => {
@@ -70,8 +74,9 @@ const streamToReadable = (stream) => {
     });
 };
 
-// --- Routes ---
-
+/* =========================================================
+ROUTES
+========================================================= */
 // Endpoint: Get Artists and Their Songs
 app.get('/api/artists', async (req, res) => {
     try {
@@ -132,12 +137,15 @@ app.get('/download-cart', async (req, res) => {
     }
 });
 
+/* =========================================================
+SERVER
+========================================================= */
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Default route: Serve index.html for `/`
+// Default route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'password.html'));
 });
 
 // Start the server
