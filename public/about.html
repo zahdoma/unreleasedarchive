@@ -9,29 +9,52 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>/unreleased</h1>
-            <p>the hub for unreleased music.</p>
-        </header>
+
+        <div class="title-container">
+            <p>
+                <span class="retro-title">
+                    /unreleased<span class="blinking-cursor">_</span>
+                </span>
+            </p>
+        </div>
+
+        <div>
+            <button class="home-btn"><a href="index.html">home</a></button>
+            <button class="roadmap-btn"><a href="roadmap.html">roadmap</a></button>
+        </div>
+
+        <hr id = "divider">
 
         <main>
+            <!--=================================================-->
             <section class="phase" onclick="toggleContent('about')">
-                <h2>about</h2>
+
+                <p class = "phase-title">about</p>
+
                 <div id="about" class="phase-content">
+                    <hr id="divider">
+                    <p class = "about-description">we aggregate the music aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </div>
+            </section>
+
+            <!--=================================================-->
+            <section class="phase" onclick="toggleContent('phase-1')">
+
+                <p class = "phase-title">faq</p>
+
+                <div id="phase-1" class="phase-content">
+                    <hr id="divider">
                     <ul>
-                        <p>we aggregate the music</p>
+                        <li><strong id="question">why do i need to connect my wallet?</strong> we only require wallet connection for checking your $UNR balance. you must hold atleast ____ to download anything.</li>
+                    </ul>
+                    <hr id="divider">
+                    <ul>
+                        <li><strong id="question">why do i need to connect my wallet?</strong> we only require wallet connection for checking your $UNR balance. you must hold atleast ____ to download anything.</li>
                     </ul>
                 </div>
             </section>
 
-            <section class="phase" onclick="toggleContent('phase-1')">
-                <h2>faq</h2>
-                <div id="phase-1" class="phase-content">
-                    <ul>
-                        <li><strong>why do i need to connect my wallet?:</strong> we only require wallet connection for checking your $UNR balance.</li>
-                    </ul>
-                </div>
-            </section>
+            <!--==============PUT MORE FAQ BELOW HERE==============-->
         </main>
     </div>
 
