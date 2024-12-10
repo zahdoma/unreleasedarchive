@@ -30,6 +30,10 @@ body {
     position: relative; 
 }
 
+green-text {
+    color: #00ff00;
+}
+
 /* =========================================================
    TITLE AND BLINKING CURSOR
    ========================================================= */
@@ -87,6 +91,7 @@ body {
        color: #fff;
        margin-top: 10px;
        margin-bottom: 0px;
+       text-align: center;
    }
 
 #question {
@@ -101,6 +106,7 @@ ul {
     padding-left: 0px;
     margin: 0px;
     text-align: left;
+    max-width: 75%;
 }
 
 li {
@@ -144,3 +150,4 @@ li {
     color: #fff;
     box-shadow: 0 0 10px #00ff00;
 }
+
