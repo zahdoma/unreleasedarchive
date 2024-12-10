@@ -30,10 +30,6 @@ body {
     position: relative; 
 }
 
-green-text {
-    color: #00ff00;
-}
-
 /* =========================================================
    TITLE AND BLINKING CURSOR
    ========================================================= */
@@ -105,8 +101,7 @@ green-text {
 ul {
     padding-left: 0px;
     margin: 0px;
-    text-align: left;
-    max-width: 75%;
+    text-align: center;
 }
 
 li {
@@ -114,8 +109,16 @@ li {
     margin-bottom: 20px;
 }
 
+li green-text {
+    color: #00ff00;
+}
+
 #lastli {
     color: #fff;
+    margin-bottom: 0px;
+}
+
+#lastli p {
     margin-bottom: 0px;
 }
 
@@ -136,6 +139,10 @@ li {
     border: 2px solid #00ff00; 
     cursor: pointer; 
     text-shadow: 0 0 10px #00ff00;
+}
+
+.phase.expanded {
+    margin-bottom: 0px;
 }
 
 .phase-content {
