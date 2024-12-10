@@ -55,7 +55,7 @@ body {
 }
 
 /* =========================================================
-   DOWNLOAD/CLEAR/CONNECT CART BUTTON
+   NAV
    ========================================================= */
    .roadmap-btn, .home-btn { 
     padding: 10px; 
@@ -80,6 +80,15 @@ body {
     text-decoration: none;
 }
 
+/* =========================================================
+   CONTENT
+   ========================================================= */
+   .about-description {
+       color: #fff;
+       margin-top: 10px;
+       margin-bottom: 0px;
+   }
+
 #question {
     font-size: 1rem;
     color: #00ff00;
@@ -96,6 +105,12 @@ ul {
 
 li {
     color: #fff;
+    margin-bottom: 20px;
+}
+
+#lastli {
+    color: #fff;
+    margin-bottom: 0px;
 }
 
 /* =========================================================
@@ -128,10 +143,4 @@ li {
     background-color: #000;
     color: #fff;
     box-shadow: 0 0 10px #00ff00;
-}
-
-.about-description {
-    color: #fff;
-    margin-top: 10px;
-    margin-bottom: 0px;
 }

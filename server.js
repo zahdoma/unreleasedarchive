@@ -1,6 +1,8 @@
 const { S3Client, ListObjectsV2Command, GetObjectCommand } = require('@aws-sdk/client-s3');
 const express = require('express');
 const archiver = require('archiver');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const path = require('path');
 const { Readable } = require('stream');
 require('dotenv').config();

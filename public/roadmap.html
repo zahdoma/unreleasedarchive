@@ -3,64 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>/unreleased Roadmap</title>
+    <title>/unreleased.</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="roadmap.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>/unreleased roadmap</h1>
-            <p>the hub for unreleased music.</p>
-        </header>
+
+        <div class="title-container">
+            <p>
+                <span class="retro-title">
+                    /unreleased<span class="blinking-cursor">_</span>
+                </span>
+            </p>
+        </div>
+
+        <div>
+            <button class="home-btn"><a href="index.html">home</a></button>
+            <button class="about-btn"><a href="about.html">about</a></button>
+        </div>
+
+        <hr id = "divider">
 
         <main>
+            <!--=================================================-->
             <section class="phase" onclick="toggleContent('launch-week')">
-                <h2>phase 1: launch (week 1-2)</h2>
+                <p class = "phase-title">phase 1: launch (week 1-2)</p>
                 <div id="launch-week" class="phase-content">
+                    
+                    <hr id = "divider">
                     <ul>
                         <li><strong>announcement & open access:</strong> announce the platform on social media and open access to $UNR holders.</li>
                         <li><strong>monitor traffic & feedback:</strong> monitor traffic, fix bugs, and collect user feedback for continuous improvement.</li>
-                        <li><strong>community engagement:</strong> create a community space for users to share feedback, suggest features, and help shape the platform.</li>
+                        <li id = "lastli"><strong>community engagement:</strong> create a community space for users to share feedback, suggest features, and help shape the platform.</li>
                     </ul>
                 </div>
-            </section>
 
+            </section>
+            <!--=================================================-->
+
+            <!--=================================================-->
             <section class="phase" onclick="toggleContent('phase-1')">
-                <h2>phase 2: collect (week 2-4)</h2>
+                <p class = "phase-title">phase 2: collect (week 2-4)</p>
                 <div id="phase-1" class="phase-content">
                     <ul>
+                        <hr id = "divider">
                         <li><strong>community collaboration:</strong> foster collaboration to expand the unreleased music library, encourage submissions, and discover new leaks.</li>
-                        <li><strong>community funding setup:</strong> set up a funding system to support leak purchases and server costs, with clear transparency on fund usage.</li>
+                        <li id = "lastli"><strong>community funding setup:</strong> set up a funding system to support leak purchases and server costs, with clear transparency on fund usage.</li>
                     </ul>
                 </div>
             </section>
+            <!--=================================================-->
 
+            <!--=================================================-->
             <section class="phase" onclick="toggleContent('phase-2')">
-                <h2>phase 3: upgrade (week 4-8)</h2>
+                <p class = "phase-title">phase 3: upgrade (week 4-8)</p>
                 <div id="phase-2" class="phase-content">
                     <ul>
+                        <hr id = "divider">
                         <li><strong>add bonding curve:</strong> list new leaks for sale; allow the community to fund them, making them available on the site once funded.</li>
-                        <li><strong>scalable infrastructure & security:</strong> enhance infrastructure to scale with growth and implement advanced security for data protection and transactions.</li>
+                        <li id = "lastli"><strong>scalable infrastructure & security:</strong> enhance infrastructure to scale with growth and implement advanced security for data protection and transactions.</li>
                     </ul>
                 </div>
             </section>
+            <!--=================================================-->
 
+            <!--=================================================-->
             <section class="phase" onclick="toggleContent('phase-3')">
-                <h2>phase 4: growth & future (weeks 8+)</h2>
+                <p class = "phase-title">phase 4: growth & future (weeks 8+)</p>
                 <div id="phase-3" class="phase-content">
                     <ul>
+                        <hr id = "divider">
                         <li><strong>web3 artist collaborations & solana ecosystem partnerships:</strong> collaborate with web3 artists and integrate solana partners for nfts and staking.</li>
                         <li><strong>platform localization & international onboarding:</strong> translate the platform into multiple languages and onboard international artists to expand the music catalog.</li>
-                        <li><strong>continuous feedback loop:</strong> monitor traffic, gather feedback, and resolve bugs for ongoing platform upgrades.</li>
+                        <li id = "lastli"><strong>continuous feedback loop:</strong> monitor traffic, gather feedback, and resolve bugs for ongoing platform upgrades.</li>
                     </ul>
                 </div>
             </section>
+            <!--=================================================-->
         </main>
-
-        <footer>
-            <p>© 2024 $UNR.</p>
-        </footer>
     </div>
 
     <script>

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             walletPublicKey = response.publicKey.toString();
             console.log("connected to:", walletPublicKey);
 
-            const tokenMintAddress = "D3QiRT12vKBpj87h99ufQFz4mCpbPC7JVy1U6NRKpump";
+            const tokenMintAddress = "5XyKkFaJpAmsH4Tf2EFj3S61W3hC5cJhxNZQQ5h1pump";
 
             const balance = await fetch(`/get-balance?wallet=${walletPublicKey}&mint=${tokenMintAddress}`)
                 .then((res) => res.json());
