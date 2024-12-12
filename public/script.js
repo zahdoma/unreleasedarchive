@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         artistsContainer.innerHTML = '';
     
         if (filteredArtists.length === 0) {
-            artistsContainer.innerHTML = '<p>no songs found...</p>';
+            artistsContainer.innerHTML = '<div id="wallet-status">no songs found...</div>';
         } else {
             filteredArtists.forEach(({ artist, songs }) => {
                 songs.forEach((song) => {
