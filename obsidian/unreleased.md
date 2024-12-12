@@ -4,17 +4,20 @@ kanban-plugin: board
 
 ---
 
-## To do #new-tag
+## To do
 
 - [ ] fix pixelation bug when opening artist
 - [ ] finish about page
 - [ ] finish roadmap page
 - [ ] add bonding curve feature
+- [ ] add animation when opening artist
+- [ ] get domain and add to render
+- [ ] switch to wasabi storage
+- [ ] add music
 
 
 ## Doing
 
-- [ ] add animation when opening artist
 
 
 ## Done

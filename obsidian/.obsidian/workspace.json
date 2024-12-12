@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c266390e920cf5b7",
+        "id": "15c8ea205aae1783",
         "type": "tabs",
         "children": [
           {
-            "id": "1cd152e2da604129",
+            "id": "5a0b9d913975f8b1",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -46,7 +46,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#red",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +69,8 @@
               "title": "Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -120,11 +121,11 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "71cf5a4b66b3642c",
+  "active": "67436a5f0c870d7a",
   "lastOpenFiles": [
-    "2024-12-08.md",
-    "unreleased.md",
     "Untitled Kanban.md",
+    "unreleased.md",
+    "2024-12-08.md",
     "Untitled.canvas",
     "Welcome.md"
   ]
