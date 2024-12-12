@@ -9,8 +9,6 @@ kanban-plugin: board
 - [ ] fix pixelation bug when opening artist
 - [ ] finish about page
 - [ ] finish roadmap page
-- [ ] add bonding curve feature
-- [ ] add animation when opening artist
 - [ ] get domain and add to render
 - [ ] switch to wasabi storage
 - [ ] add music
@@ -18,6 +16,8 @@ kanban-plugin: board
 
 ## Doing
 
+- [ ] download full artist button
+- [ ] add bonding curve feature
 
 
 ## Done
