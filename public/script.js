@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         walletStatusDiv.textContent = message;
     };
 
-
     /* =========================================================
    CONNECT
    ========================================================= */
