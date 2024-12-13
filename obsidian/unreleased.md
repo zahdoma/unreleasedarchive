@@ -12,6 +12,7 @@ kanban-plugin: board
 - [ ] get domain and add to render
 - [ ] switch to wasabi storage
 - [ ] add music
+- [ ] add spot to copy and paste CA
 
 
 ## Doing
