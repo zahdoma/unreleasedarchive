@@ -61,6 +61,18 @@ const s3 = new S3Client({
 });
 const bucketName = 'unreleased';
 
+// WASABI
+// const s3 = new S3Client({
+//     endpoint: 'https://s3.wasabisys.com', // Use the appropriate endpoint for your region
+//     region: 'us-east-1', // Change to your Wasabi bucket's region
+//     credentials: {
+//         accessKeyId: process.env.WASABI_ACCESS_KEY_ID, // Wasabi Access Key
+//         secretAccessKey: process.env.WASABI_SECRET_ACCESS_KEY // Wasabi Secret Key
+//     }
+// });
+// const bucketName = 'unreleased'; // Your Wasabi bucket name
+
+
 /* =========================================================
 HELPER FUNCTIONS
 ========================================================= */
