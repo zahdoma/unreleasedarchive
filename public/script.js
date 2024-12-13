@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         walletStatusDiv.textContent = message;
     };
 
+
+    /* =========================================================
+   CONNECT
+   ========================================================= */
     document.getElementById('connectButton').addEventListener('click', async () => {
         try {
             if (!window.solana || !window.solana.isPhantom) {
@@ -29,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             walletPublicKey = response.publicKey.toString();
             console.log("connected to:", walletPublicKey);
 
-            const tokenMintAddress = "5XyKkFaJpAmsH4Tf2EFj3S61W3hC5cJhxNZQQ5h1pump";
+            const tokenMintAddress = "AkukwSXUTkDSeh2c1ypyvN4unzyr4xb2T4SmKkix6bT8";
 
             const balance = await fetch(`/get-balance?wallet=${walletPublicKey}&mint=${tokenMintAddress}`)
                 .then((res) => res.json());
