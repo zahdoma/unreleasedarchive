@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const clearCartBtn = document.getElementById('clear-cart-btn');
     const artistsContainer = document.getElementById('artists');
 
+    const tokenMintAddress = "";
+    const requiredTokenAmount = 20000;
+
     let cart = [];
     let walletPublicKey = null;
     let allData = {};
@@ -31,8 +34,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             const response = await window.solana.connect();
             walletPublicKey = response.publicKey.toString();
             console.log("connected to:", walletPublicKey);
-
-            const tokenMintAddress = "AkukwSXUTkDSeh2c1ypyvN4unzyr4xb2T4SmKkix6bT8";
 
             const balance = await fetch(`/get-balance?wallet=${walletPublicKey}&mint=${tokenMintAddress}`)
                 .then((res) => res.json());
@@ -226,9 +227,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             showError('your cart is empty.');
             return;
         }
-
-        const tokenMintAddress = "D3QiRT12vKBpj87h99ufQFz4mCpbPC7JVy1U6NRKpump"; // Replace with your token's mint address
-        const requiredTokenAmount = 3000; // Replace with the required amount of tokens
 
         try {
             const response = await fetch(`/get-balance?wallet=${walletPublicKey}&mint=${tokenMintAddress}`);
