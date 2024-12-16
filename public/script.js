@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const clearCartBtn = document.getElementById('clear-cart-btn');
     const artistsContainer = document.getElementById('artists');
 
-    const tokenMintAddress = "";
-    const requiredTokenAmount = 20000;
+    const tokenMintAddress = "864t7u5rmWdQd6rn3hGg4RnuicrA5jmauW8oz8mBpump";
+    const requiredTokenAmount = 50000;
 
     let cart = [];
     let walletPublicKey = null;
