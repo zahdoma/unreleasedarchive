@@ -111,7 +111,7 @@ hr.vertical {
    ARTIST BOX
    ========================================================= */
 .artist { 
-    margin: none;
+    margin-top: 10px;
     padding: 10px; 
     border: 2px solid #00ff00; 
     cursor: pointer; 

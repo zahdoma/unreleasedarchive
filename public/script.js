@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const renderArtists = (data) => {
         artistsContainer.innerHTML = '';
-
+    
         if (Object.keys(data).length === 0) {
             artistsContainer.innerHTML = '<p>no artists found.</p>';
         } else {
@@ -80,26 +80,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 /* =========================================================
    CREATE ARTIST UI
    ========================================================= */
-    const createArtistElement = (artist, songs) => {
-        const artistDiv = document.createElement('div');
-        artistDiv.classList.add('artist');
-        artistDiv.textContent = artist;
+   const createArtistElement = (artist, songs) => {
+    const artistDiv = document.createElement('div');
+    artistDiv.classList.add('artist');
+    artistDiv.textContent = artist;
 
-        const songsDiv = document.createElement('div');
-        songsDiv.classList.add('songs');
-        songsDiv.style.display = 'none';
+    const songsDiv = document.createElement('div');
+    songsDiv.classList.add('songs');
+    songsDiv.style.display = 'none';
 
-        songs.forEach((song) => {
-            const songDiv = createSongElement(artist, song);
-            songsDiv.appendChild(songDiv);
-        });
+    // Filter out invalid songs before rendering
+    songs.filter(song => song.trim() !== "").forEach((song) => {
+        const songDiv = createSongElement(artist, song);
+        songsDiv.appendChild(songDiv);
+    });
 
-        artistDiv.appendChild(songsDiv);
-        artistDiv.addEventListener('click', () => toggleDisplay(songsDiv));
+    artistDiv.appendChild(songsDiv);
+    artistDiv.addEventListener('click', () => toggleDisplay(songsDiv));
 
-        return artistDiv;
-    };
-
+    return artistDiv;
+};
 /* =========================================================
    CREATE SONG UI
    ========================================================= */
